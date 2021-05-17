@@ -23,20 +23,20 @@ void sfml::clear()
     this->window.clear();
 }
 
-void sfml::convex(std::string &name, std::vector<int> color, int pointCount)
+void sfml::convex(std::string name, std::vector<int> color, int pointCount)
 {
     this->convexs[name].setPointCount(pointCount);
     this->convexs[name].setFillColor(sf::Color(color[0], color[1], color[2], color[3]));
 }
 
-void sfml::setConvex(std::string &name, std::vector<std::vector<int>> &points)
+void sfml::setConvex(std::string name, std::vector<std::vector<int>> points)
 {
     for (int i = 0; i < (int)points.size(); i++) {
         this->convexs[name].setPoint(i, sf::Vector2f(points[i][0], points[i][1]));
     }
 }
 
-void sfml::drawConvex(std::string &name)
+void sfml::drawConvex(std::string name)
 {
     this->window.draw(this->convexs[name]);
 }

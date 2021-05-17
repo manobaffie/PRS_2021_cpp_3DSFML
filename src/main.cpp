@@ -36,39 +36,39 @@ int main()
 {
     sfml s(500, 500, "test-3D");
 
-    std::vector<int> base = {150, 150};
+    // std::vector<int> base = {150, 150};
 
-    std::string name0 = "1";
-    std::vector<std::vector<int>> points0 = {{100, 100}, {200, 100}, {200, 200}, {100, 200}};
-    s.convex(name0, {255, 0, 0, 70}, 4);
-    s.setConvex(name0, points0);
+    std::vector<bind> all;
 
-    std::string name1 = "center";
-    std::vector<int> a = center({{100, 100}, {200, 100}, {200, 200}, {100, 200}});
-    std::vector<std::vector<int>> points1 = {{0, a[0] - 2, a[1] - 2}, {1, a[0] + 2, a[1] - 2}, 
-                                            {2,  a[0] + 2, a[1] + 2}, {3,  a[0] - 2, a[1] + 2}};
+    all.push_back({"1", {{100, 100}, {200, 100}, {200, 200}, {100, 200}}, {255, 0, 0, 40}});
+    std::vector<int> a = center(all[0].p);
+    all.push_back({"center", {{a[0] - 2, a[1] - 2}, {a[0] + 2, a[1] - 2}, {a[0] + 2, a[1] + 2}, {a[0] - 2, a[1] + 2}}, {0, 255, 0, 100}});
 
-    s.convex(name1, {0, 255, 0, 70}, 4);
-    s.setConvex(name1, points1);
+    for (auto &i : all) {
+        s.convex(i.name, i.color, i.p.size());
+    }
 
     s.startClock("time");
 
     while (s.isOpen()) {
+        s.clear();
+        s.event();
 
         if (s.getClock("time") > 1) {
             s.restartClock("time");
 
-            // points1[2][1]++;
-            // points1[1][1]++;
+            std::vector<int> a = center(all[0].p);
+            all[1].p = {{a[0] - 2, a[1] - 2}, {a[0] + 2, a[1] - 2}, {a[0] + 2, a[1] + 2}, {a[0] - 2, a[1] + 2}};
 
-            // s.setConvex(name0, points1);
+            // all[0].p[2][0] += 10;
+
+            for (auto &i : all) {
+                s.setConvex(i.name, i.p);
+            }
         }
-
-        s.clear();
-        s.event();
-        s.drawConvex(name0);
-        s.drawConvex(name1);
-
+        for (auto &i : all) {
+            s.drawConvex(i.name);
+        }
         s.display();
     }
 

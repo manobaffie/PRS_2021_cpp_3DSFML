@@ -3,6 +3,14 @@
 
 #include <SFML/Graphics.hpp>
 
+struct bind
+{
+    std::string name;
+    std::vector<std::vector<int>> p;
+    std::vector<int> color;
+};
+
+
 class sfml
 {
     private:
@@ -20,9 +28,9 @@ class sfml
         void clear();
         void event();
 
-        void convex(std::string &name, std::vector<int> color, int pointCountm);
-        void setConvex(std::string &name, std::vector<std::vector<int>> &points);
-        void drawConvex(std::string &name);
+        void convex(std::string name, std::vector<int> color, int pointCountm);
+        void setConvex(std::string name, std::vector<std::vector<int>> points);
+        void drawConvex(std::string name);
 
         void startClock(std::string id);
         void restartClock(std::string id);
