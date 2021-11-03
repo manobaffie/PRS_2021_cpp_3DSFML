@@ -4,8 +4,9 @@ LIBS		=	-ldl -lsfml-graphics -lsfml-window -lsfml-system
 
 CXXFLAGS	=	-Wall -Wextra -g3 -std=c++17
 
-SRC			=	src/main.cpp	\
-				src/sfml.cpp
+SRC			=	src/main.cpp				\
+				src/sfml.cpp				\
+				lib/math/math.cpp			\
 
 OBJS		=	$(SRC:.cpp=.o)
 
