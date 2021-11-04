@@ -1,3 +1,4 @@
+#include <iostream>
 #include <dlfcn.h>
 
 template <class T>

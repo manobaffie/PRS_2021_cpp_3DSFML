@@ -1,5 +1,5 @@
-#include "../../libGraph/Igraph.hpp"
 #include "../../lib/LoadLib/LoadLib.hpp"
+#include "../render3D/render3D.hpp"
 
 class core
 {

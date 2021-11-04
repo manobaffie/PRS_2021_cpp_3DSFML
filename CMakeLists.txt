@@ -10,7 +10,9 @@ set(src_dir src)
 set(include_dir include)
 
 set(3Dlib_src
-        ${src_dir}/main.cpp)
+        ${src_dir}/main.cpp
+        ${src_dir}/core/core.cpp
+        ${src_dir}/render3D/render3D.cpp)
 
 include_directories(${include_dir})
 add_executable(${3Dlib_bin} ${3Dlib_src})

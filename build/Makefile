@@ -123,6 +123,33 @@ depend:
 	$(MAKE) -f CMakeFiles/3Dlib.dir/build.make CMakeFiles/3Dlib.dir/build
 .PHONY : 3Dlib/fast
 
+src/core/core.o: src/core/core.cpp.o
+
+.PHONY : src/core/core.o
+
+# target to build an object file
+src/core/core.cpp.o:
+	$(MAKE) -f CMakeFiles/3Dlib.dir/build.make CMakeFiles/3Dlib.dir/src/core/core.cpp.o
+.PHONY : src/core/core.cpp.o
+
+src/core/core.i: src/core/core.cpp.i
+
+.PHONY : src/core/core.i
+
+# target to preprocess a source file
+src/core/core.cpp.i:
+	$(MAKE) -f CMakeFiles/3Dlib.dir/build.make CMakeFiles/3Dlib.dir/src/core/core.cpp.i
+.PHONY : src/core/core.cpp.i
+
+src/core/core.s: src/core/core.cpp.s
+
+.PHONY : src/core/core.s
+
+# target to generate assembly for a file
+src/core/core.cpp.s:
+	$(MAKE) -f CMakeFiles/3Dlib.dir/build.make CMakeFiles/3Dlib.dir/src/core/core.cpp.s
+.PHONY : src/core/core.cpp.s
+
 src/main.o: src/main.cpp.o
 
 .PHONY : src/main.o
@@ -150,6 +177,33 @@ src/main.cpp.s:
 	$(MAKE) -f CMakeFiles/3Dlib.dir/build.make CMakeFiles/3Dlib.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/render3D/render3D.o: src/render3D/render3D.cpp.o
+
+.PHONY : src/render3D/render3D.o
+
+# target to build an object file
+src/render3D/render3D.cpp.o:
+	$(MAKE) -f CMakeFiles/3Dlib.dir/build.make CMakeFiles/3Dlib.dir/src/render3D/render3D.cpp.o
+.PHONY : src/render3D/render3D.cpp.o
+
+src/render3D/render3D.i: src/render3D/render3D.cpp.i
+
+.PHONY : src/render3D/render3D.i
+
+# target to preprocess a source file
+src/render3D/render3D.cpp.i:
+	$(MAKE) -f CMakeFiles/3Dlib.dir/build.make CMakeFiles/3Dlib.dir/src/render3D/render3D.cpp.i
+.PHONY : src/render3D/render3D.cpp.i
+
+src/render3D/render3D.s: src/render3D/render3D.cpp.s
+
+.PHONY : src/render3D/render3D.s
+
+# target to generate assembly for a file
+src/render3D/render3D.cpp.s:
+	$(MAKE) -f CMakeFiles/3Dlib.dir/build.make CMakeFiles/3Dlib.dir/src/render3D/render3D.cpp.s
+.PHONY : src/render3D/render3D.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -159,9 +213,15 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... 3Dlib"
+	@echo "... src/core/core.o"
+	@echo "... src/core/core.i"
+	@echo "... src/core/core.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/render3D/render3D.o"
+	@echo "... src/render3D/render3D.i"
+	@echo "... src/render3D/render3D.s"
 .PHONY : help
 
 

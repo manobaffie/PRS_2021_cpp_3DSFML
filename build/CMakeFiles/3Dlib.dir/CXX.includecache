@@ -7,7 +7,15 @@
 #IncludeRegexTransform: 
 
 /mnt/c/Users/mano/ubuntu/perso/PRS_2021_cpp_3DSFML/lib/LoadLib/LoadLib.hpp
+iostream
+-
 dlfcn.h
+-
+
+/mnt/c/Users/mano/ubuntu/perso/PRS_2021_cpp_3DSFML/lib/math/matrix/matrix.hpp
+iostream
+-
+vector
 -
 
 /mnt/c/Users/mano/ubuntu/perso/PRS_2021_cpp_3DSFML/libGraph/Igraph.hpp
@@ -16,9 +24,19 @@ vector
 iostream
 -
 
-/mnt/c/Users/mano/ubuntu/perso/PRS_2021_cpp_3DSFML/src/main.cpp
-../libGraph/Igraph.hpp
-/mnt/c/Users/mano/ubuntu/perso/PRS_2021_cpp_3DSFML/libGraph/Igraph.hpp
-../lib/LoadLib/LoadLib.hpp
+/mnt/c/Users/mano/ubuntu/perso/PRS_2021_cpp_3DSFML/src/core/core.hpp
+../../lib/LoadLib/LoadLib.hpp
 /mnt/c/Users/mano/ubuntu/perso/PRS_2021_cpp_3DSFML/lib/LoadLib/LoadLib.hpp
+../render3D/render3D.hpp
+/mnt/c/Users/mano/ubuntu/perso/PRS_2021_cpp_3DSFML/src/render3D/render3D.hpp
+
+/mnt/c/Users/mano/ubuntu/perso/PRS_2021_cpp_3DSFML/src/main.cpp
+core/core.hpp
+/mnt/c/Users/mano/ubuntu/perso/PRS_2021_cpp_3DSFML/src/core/core.hpp
+../lib/math/matrix/matrix.hpp
+/mnt/c/Users/mano/ubuntu/perso/PRS_2021_cpp_3DSFML/lib/math/matrix/matrix.hpp
+
+/mnt/c/Users/mano/ubuntu/perso/PRS_2021_cpp_3DSFML/src/render3D/render3D.hpp
+../../libGraph/Igraph.hpp
+/mnt/c/Users/mano/ubuntu/perso/PRS_2021_cpp_3DSFML/libGraph/Igraph.hpp
 
