@@ -1,0 +1,32 @@
+#include <SFML/Graphics.hpp>
+#include <iostream>
+
+#include "../Igraph.hpp"
+
+class sfml : public Igraph
+{
+    private:
+        sf::RenderWindow window;
+        sf::Event event;
+        std::map<std::string, sf::ConvexShape> allShape;
+
+    public:
+        sfml(int x, int y, std::string name);
+        sfml() = default;
+        ~sfml();
+
+        void setWindow(int fps, std::string title, std::vector<int> size);
+
+        void pollEvent();
+
+        void display();
+        bool isOpen();
+        void clear();
+
+        void setConvexShape(std::string id, std::vector<Points_s> Points);
+        void setLineShape(std::string id, size_t size, Points_s Points1, Points_s Points2);
+
+        void drawShape(std::string id);
+        void delShape(std::string id);
+};
+

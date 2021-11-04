@@ -1,0 +1,1 @@
+/usr/bin/c++    -rdynamic CMakeFiles/3Dlib.dir/src/main.cpp.o  -o 3Dlib  -fPIC -ldl 
