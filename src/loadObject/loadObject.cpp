@@ -8,7 +8,14 @@ loadObject::~loadObject()
 {
 }
 
-void loadObject::addObject(std::string id, object *Obj)
+void loadObject::addObject(object *Obj)
 {
-    this->allObject.insert(std::make_pair(id, Obj));
+    this->allObject.insert(std::make_pair(Obj->getId(), Obj));
+}
+
+void loadObject::printAllObject()
+{
+    for(std::map<std::string, object *>::const_iterator it = this->allObject.begin() ; it != this->allObject.end() ; ++it) {
+        it->second->printObject3D();
+    }
 }

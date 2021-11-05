@@ -3,7 +3,7 @@
 
 int main(int ac, char *av[])
 {
-    // core c();
+    core c;
 
     return (0);
 }

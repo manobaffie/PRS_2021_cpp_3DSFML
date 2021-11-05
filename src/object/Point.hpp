@@ -14,18 +14,39 @@ struct Point2D_s
 
     int x;
     int y;
+
+    friend std::ostream& operator<<(std::ostream& os, const Point2D_s &p)
+    {
+        os << "[" << p.x << ";" << p.y << "]";
+        return (os);
+    }
 };
 
 struct Point3D_s
 {
-    static Point3D_s Create(double x, double y, double z)
+    static Point3D_s Create(double x, double y, double z, std::string id)
     {
-        return (Point3D_s({x, y, z}));
+        Point3D_s Point;
+
+        Point.x = x;
+        Point.y = y;
+        Point.z = z;
+        Point.id = id;
+
+        return (Point);
     }
     
     double x;
     double y;
     double z;
+    std::string id;
+
+    friend std::ostream& operator<<(std::ostream& os, const Point3D_s &p)
+    {
+        os << p.id << " : [" << p.x << ";" << p.y << ";" << p.z << "]";
+        return (os);
+    }
+
 };
 
 struct Line2D_s
@@ -45,6 +66,12 @@ struct Line2D_s
 
     Point2D_s Points1;
     Point2D_s Points2;
+
+    friend std::ostream& operator<<(std::ostream& os, const Line2D_s &l)
+    {
+        os << l.id << " : [" << l.size << "]" << l.Points1 << " <-> " << l.Points2;
+        return (os);
+    }
 };
 
 struct Line3D_s
@@ -64,6 +91,12 @@ struct Line3D_s
 
     Point3D_s Points1;
     Point3D_s Points2;
+
+    friend std::ostream& operator<<(std::ostream& os, const Line3D_s &l)
+    {
+        os << l.id << " : [" << l.size << "]" << l.Points1 << " <-> " << l.Points2;
+        return (os);
+    }
 };
 
 #endif

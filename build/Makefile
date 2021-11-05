@@ -150,6 +150,33 @@ src/core/core.cpp.s:
 	$(MAKE) -f CMakeFiles/3Dlib.dir/build.make CMakeFiles/3Dlib.dir/src/core/core.cpp.s
 .PHONY : src/core/core.cpp.s
 
+src/loadObject/loadObject.o: src/loadObject/loadObject.cpp.o
+
+.PHONY : src/loadObject/loadObject.o
+
+# target to build an object file
+src/loadObject/loadObject.cpp.o:
+	$(MAKE) -f CMakeFiles/3Dlib.dir/build.make CMakeFiles/3Dlib.dir/src/loadObject/loadObject.cpp.o
+.PHONY : src/loadObject/loadObject.cpp.o
+
+src/loadObject/loadObject.i: src/loadObject/loadObject.cpp.i
+
+.PHONY : src/loadObject/loadObject.i
+
+# target to preprocess a source file
+src/loadObject/loadObject.cpp.i:
+	$(MAKE) -f CMakeFiles/3Dlib.dir/build.make CMakeFiles/3Dlib.dir/src/loadObject/loadObject.cpp.i
+.PHONY : src/loadObject/loadObject.cpp.i
+
+src/loadObject/loadObject.s: src/loadObject/loadObject.cpp.s
+
+.PHONY : src/loadObject/loadObject.s
+
+# target to generate assembly for a file
+src/loadObject/loadObject.cpp.s:
+	$(MAKE) -f CMakeFiles/3Dlib.dir/build.make CMakeFiles/3Dlib.dir/src/loadObject/loadObject.cpp.s
+.PHONY : src/loadObject/loadObject.cpp.s
+
 src/main.o: src/main.cpp.o
 
 .PHONY : src/main.o
@@ -270,6 +297,9 @@ help:
 	@echo "... src/core/core.o"
 	@echo "... src/core/core.i"
 	@echo "... src/core/core.s"
+	@echo "... src/loadObject/loadObject.o"
+	@echo "... src/loadObject/loadObject.i"
+	@echo "... src/loadObject/loadObject.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

@@ -6,8 +6,6 @@
 
 struct matrix2D_s
 {
-    std::vector<std::vector<int>> matrix;
-
     static matrix2D_s Create(size_t const x, size_t const y)
     {
         matrix2D_s matrix;
@@ -22,6 +20,8 @@ struct matrix2D_s
         matrix.matrix = matrix2D;
         return (matrix);
     }
+
+    std::vector<std::vector<int>> matrix;
 
     static matrix2D_s Create(std::vector<std::vector<int>> matrix)
     {

@@ -14,6 +14,8 @@ set(3Dlib_src
 
         ${src_dir}/core/core.cpp
 
+        ${src_dir}/loadObject/loadObject.cpp
+
         ${src_dir}/object/object.cpp
         ${src_dir}/object/cube/cube.cpp
 

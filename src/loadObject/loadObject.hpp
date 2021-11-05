@@ -1,4 +1,4 @@
-#include "../object/object.hpp"
+#include "../object/cube/cube.hpp"
 
 #include <map>
 
@@ -11,5 +11,7 @@ class loadObject
         loadObject();
         ~loadObject();
 
-        void addObject(std::string id, object *Obj);
+        void addObject(object *Obj);
+
+        void printAllObject();
 };
