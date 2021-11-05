@@ -28,5 +28,7 @@ class sfml : public Igraph
 
         void drawShape(std::string id);
         void delShape(std::string id);
+
+        void drawAllShape();
 };
 

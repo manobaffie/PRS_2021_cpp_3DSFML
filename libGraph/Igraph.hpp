@@ -26,6 +26,8 @@ class Igraph
 
         virtual void drawShape(std::string id) = 0;
         virtual void delShape(std::string id) = 0;
+
+        virtual void drawAllShape() = 0;
 };
 
 #endif

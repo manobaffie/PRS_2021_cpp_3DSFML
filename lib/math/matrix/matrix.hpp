@@ -1,8 +1,11 @@
 #ifndef matrix_HPP
 #define matrix_HPP
 
+#include <math.h>
 #include <iostream>
 #include <vector>
+
+#define PI 3.14159265
 
 struct matrix2D_s
 {

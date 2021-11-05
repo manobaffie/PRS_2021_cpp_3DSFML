@@ -1,43 +1,40 @@
 #include "cube.hpp"
 
 cube::cube(std::string id, Point3D_s origine, size_t size) :
-object(id, this->getCubePoints(id, origine, size))
+object(), cubeId(id), Size(size)
 {
+    this->Origine = new Point3D_s(Point3D_s::Create(origine.x, origine.y, origine.z, origine.id));
+
+    this->setPresetLine3D();
+    this->setLine3D();
+
+    this->setObject(id, this->getCubePoints());
 }
 
 cube::~cube()
 {
 }
 
-std::vector<Line3D_s> cube::getCubePoints(std::string id, Point3D_s origine, size_t size)
+std::vector<Line3D_s> cube::getCubePoints()
 {
-    this->Id = id;
-    this->Origine = new Point3D_s(Point3D_s::Create(origine.x, origine.y, origine.z, origine.id));
-    this->Size = size;
-
-    this->setPresetLine3D();
-    this->setLine3D();
-
     return (this->cubePoints);
 }
 
 void cube::setLine3D()
 {
-    this->setLine3DFace(0, 4, 1, 0);
-    this->setLine3DFace(4, 8, 1, 3);
-    this->setLine3DFace(0, 4, 4, 7);
+    this->setLine3DFace(0, 4, 1, 0, 3);
+    this->setLine3DFace(4, 8, 1, 4, 7);
+    this->setLine3DFace(0, 4, 4, 7, 7);
 }
 
-void cube::setLine3DFace(int range0, int range1, int add, int init)
+void cube::setLine3DFace(int range0, int range1, int add, int init, int limit)
 {
     for (size_t i = range0; i < range1; i++) {
-        size_t j = i + 1;
-
-        if (j > range1 - 1) j = init;
+        size_t j = (i + add > limit) ? init : i + add;
 
         this->cubePoints.push_back(
             Line3D_s::Create (
-                this->Id + "_" + cubePreset[i].id + cubePreset[j].id,
+                this->cubeId + "_" + cubePreset[i].id + cubePreset[j].id,
                 this->Size,
                 Point3D_s::Create (
                     Origine->x + cubePreset[i].x * this->Size,

@@ -54,14 +54,13 @@ void sfml::setLineShape(std::string id, size_t size, Point2D_s Points1, Point2D_
 {
     this->setConvexShape(id, 
         {
-            {Points1.x, Points1.y},
-            {int(Points1.x + (size / 2)), Points1.y},
+            {int(Points1.x - (size / 2)), int(Points1.y - (size / 2))},
+            {int(Points1.x + (size / 2)), int(Points1.y + (size / 2))},
             {int(Points2.x + (size / 2)), int(Points2.y + (size / 2))},
-            {Points2.x, int(Points2.y + (size / 2))}
+            {int(Points2.x - (size / 2)), int(Points2.y - (size / 2))}
         }
     );
 }
-
 
 void sfml::drawShape(std::string id)
 {
@@ -71,6 +70,14 @@ void sfml::drawShape(std::string id)
 void sfml::delShape(std::string id)
 {
     this->allShape.erase(id);
+}
+
+void sfml::drawAllShape()
+{
+
+    for(std::map<std::string, sf::ConvexShape>::const_iterator it = this->allShape.begin() ; it != this->allShape.end() ; ++it) {
+        this->drawShape(it->first);
+    }
 }
 
 extern "C" {

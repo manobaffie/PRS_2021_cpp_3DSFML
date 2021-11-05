@@ -23,6 +23,6 @@ set(3Dlib_src
 
 include_directories(${include_dir})
 add_executable(${3Dlib_bin} ${3Dlib_src})
-add_compile_options(-Wall -Wextra -Werror)
+add_compile_options(-Wall -Wextra -Werror -g3)
 
 target_link_libraries(${3Dlib_bin} -fPIC -ldl)

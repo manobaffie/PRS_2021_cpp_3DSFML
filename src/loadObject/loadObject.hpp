@@ -14,4 +14,6 @@ class loadObject
         void addObject(object *Obj);
 
         void printAllObject();
+        void printAllPerspectiveObject3D();
+        std::vector<Line2D_s> getObject2D(std::string id);
 };

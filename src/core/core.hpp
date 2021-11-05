@@ -5,10 +5,13 @@ class core
 {
     private:
         Igraph *graph;
+        render3D rd;
 
     public:
         core();
         ~core();
 
         void start();
+
+        void addtOBJ(std::string id);
 };
