@@ -39,7 +39,7 @@ void sfml::clear()
     this->window.clear();
 }
 
-void sfml::setConvexShape(std::string id, std::vector<Points_s> Points)
+void sfml::setConvexShape(std::string id, std::vector<Point2D_s> Points)
 {
     sf::ConvexShape convex;
 
@@ -50,7 +50,7 @@ void sfml::setConvexShape(std::string id, std::vector<Points_s> Points)
     this->allShape.insert(std::make_pair(id, convex));
 }
 
-void sfml::setLineShape(std::string id, size_t size, Points_s Points1, Points_s Points2)
+void sfml::setLineShape(std::string id, size_t size, Point2D_s Points1, Point2D_s Points2)
 {
     this->setConvexShape(id, 
         {

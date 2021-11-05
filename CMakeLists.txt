@@ -11,7 +11,12 @@ set(include_dir include)
 
 set(3Dlib_src
         ${src_dir}/main.cpp
+
         ${src_dir}/core/core.cpp
+
+        ${src_dir}/object/object.cpp
+        ${src_dir}/object/cube/cube.cpp
+
         ${src_dir}/render3D/render3D.cpp)
 
 include_directories(${include_dir})

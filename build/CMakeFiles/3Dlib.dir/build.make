@@ -83,9 +83,35 @@ CMakeFiles/3Dlib.dir/src/core/core.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/3Dlib.dir/src/core/core.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/mano/ubuntu/perso/PRS_2021_cpp_3DSFML/src/core/core.cpp -o CMakeFiles/3Dlib.dir/src/core/core.cpp.s
 
+CMakeFiles/3Dlib.dir/src/object/object.cpp.o: CMakeFiles/3Dlib.dir/flags.make
+CMakeFiles/3Dlib.dir/src/object/object.cpp.o: ../src/object/object.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/mano/ubuntu/perso/PRS_2021_cpp_3DSFML/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/3Dlib.dir/src/object/object.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/3Dlib.dir/src/object/object.cpp.o -c /mnt/c/Users/mano/ubuntu/perso/PRS_2021_cpp_3DSFML/src/object/object.cpp
+
+CMakeFiles/3Dlib.dir/src/object/object.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/3Dlib.dir/src/object/object.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/mano/ubuntu/perso/PRS_2021_cpp_3DSFML/src/object/object.cpp > CMakeFiles/3Dlib.dir/src/object/object.cpp.i
+
+CMakeFiles/3Dlib.dir/src/object/object.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/3Dlib.dir/src/object/object.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/mano/ubuntu/perso/PRS_2021_cpp_3DSFML/src/object/object.cpp -o CMakeFiles/3Dlib.dir/src/object/object.cpp.s
+
+CMakeFiles/3Dlib.dir/src/object/cube/cube.cpp.o: CMakeFiles/3Dlib.dir/flags.make
+CMakeFiles/3Dlib.dir/src/object/cube/cube.cpp.o: ../src/object/cube/cube.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/mano/ubuntu/perso/PRS_2021_cpp_3DSFML/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/3Dlib.dir/src/object/cube/cube.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/3Dlib.dir/src/object/cube/cube.cpp.o -c /mnt/c/Users/mano/ubuntu/perso/PRS_2021_cpp_3DSFML/src/object/cube/cube.cpp
+
+CMakeFiles/3Dlib.dir/src/object/cube/cube.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/3Dlib.dir/src/object/cube/cube.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/mano/ubuntu/perso/PRS_2021_cpp_3DSFML/src/object/cube/cube.cpp > CMakeFiles/3Dlib.dir/src/object/cube/cube.cpp.i
+
+CMakeFiles/3Dlib.dir/src/object/cube/cube.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/3Dlib.dir/src/object/cube/cube.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/mano/ubuntu/perso/PRS_2021_cpp_3DSFML/src/object/cube/cube.cpp -o CMakeFiles/3Dlib.dir/src/object/cube/cube.cpp.s
+
 CMakeFiles/3Dlib.dir/src/render3D/render3D.cpp.o: CMakeFiles/3Dlib.dir/flags.make
 CMakeFiles/3Dlib.dir/src/render3D/render3D.cpp.o: ../src/render3D/render3D.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/mano/ubuntu/perso/PRS_2021_cpp_3DSFML/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/3Dlib.dir/src/render3D/render3D.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/mano/ubuntu/perso/PRS_2021_cpp_3DSFML/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/3Dlib.dir/src/render3D/render3D.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/3Dlib.dir/src/render3D/render3D.cpp.o -c /mnt/c/Users/mano/ubuntu/perso/PRS_2021_cpp_3DSFML/src/render3D/render3D.cpp
 
 CMakeFiles/3Dlib.dir/src/render3D/render3D.cpp.i: cmake_force
@@ -100,6 +126,8 @@ CMakeFiles/3Dlib.dir/src/render3D/render3D.cpp.s: cmake_force
 3Dlib_OBJECTS = \
 "CMakeFiles/3Dlib.dir/src/main.cpp.o" \
 "CMakeFiles/3Dlib.dir/src/core/core.cpp.o" \
+"CMakeFiles/3Dlib.dir/src/object/object.cpp.o" \
+"CMakeFiles/3Dlib.dir/src/object/cube/cube.cpp.o" \
 "CMakeFiles/3Dlib.dir/src/render3D/render3D.cpp.o"
 
 # External object files for target 3Dlib
@@ -107,10 +135,12 @@ CMakeFiles/3Dlib.dir/src/render3D/render3D.cpp.s: cmake_force
 
 3Dlib: CMakeFiles/3Dlib.dir/src/main.cpp.o
 3Dlib: CMakeFiles/3Dlib.dir/src/core/core.cpp.o
+3Dlib: CMakeFiles/3Dlib.dir/src/object/object.cpp.o
+3Dlib: CMakeFiles/3Dlib.dir/src/object/cube/cube.cpp.o
 3Dlib: CMakeFiles/3Dlib.dir/src/render3D/render3D.cpp.o
 3Dlib: CMakeFiles/3Dlib.dir/build.make
 3Dlib: CMakeFiles/3Dlib.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/c/Users/mano/ubuntu/perso/PRS_2021_cpp_3DSFML/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable 3Dlib"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/c/Users/mano/ubuntu/perso/PRS_2021_cpp_3DSFML/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable 3Dlib"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/3Dlib.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -177,6 +177,60 @@ src/main.cpp.s:
 	$(MAKE) -f CMakeFiles/3Dlib.dir/build.make CMakeFiles/3Dlib.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/object/cube/cube.o: src/object/cube/cube.cpp.o
+
+.PHONY : src/object/cube/cube.o
+
+# target to build an object file
+src/object/cube/cube.cpp.o:
+	$(MAKE) -f CMakeFiles/3Dlib.dir/build.make CMakeFiles/3Dlib.dir/src/object/cube/cube.cpp.o
+.PHONY : src/object/cube/cube.cpp.o
+
+src/object/cube/cube.i: src/object/cube/cube.cpp.i
+
+.PHONY : src/object/cube/cube.i
+
+# target to preprocess a source file
+src/object/cube/cube.cpp.i:
+	$(MAKE) -f CMakeFiles/3Dlib.dir/build.make CMakeFiles/3Dlib.dir/src/object/cube/cube.cpp.i
+.PHONY : src/object/cube/cube.cpp.i
+
+src/object/cube/cube.s: src/object/cube/cube.cpp.s
+
+.PHONY : src/object/cube/cube.s
+
+# target to generate assembly for a file
+src/object/cube/cube.cpp.s:
+	$(MAKE) -f CMakeFiles/3Dlib.dir/build.make CMakeFiles/3Dlib.dir/src/object/cube/cube.cpp.s
+.PHONY : src/object/cube/cube.cpp.s
+
+src/object/object.o: src/object/object.cpp.o
+
+.PHONY : src/object/object.o
+
+# target to build an object file
+src/object/object.cpp.o:
+	$(MAKE) -f CMakeFiles/3Dlib.dir/build.make CMakeFiles/3Dlib.dir/src/object/object.cpp.o
+.PHONY : src/object/object.cpp.o
+
+src/object/object.i: src/object/object.cpp.i
+
+.PHONY : src/object/object.i
+
+# target to preprocess a source file
+src/object/object.cpp.i:
+	$(MAKE) -f CMakeFiles/3Dlib.dir/build.make CMakeFiles/3Dlib.dir/src/object/object.cpp.i
+.PHONY : src/object/object.cpp.i
+
+src/object/object.s: src/object/object.cpp.s
+
+.PHONY : src/object/object.s
+
+# target to generate assembly for a file
+src/object/object.cpp.s:
+	$(MAKE) -f CMakeFiles/3Dlib.dir/build.make CMakeFiles/3Dlib.dir/src/object/object.cpp.s
+.PHONY : src/object/object.cpp.s
+
 src/render3D/render3D.o: src/render3D/render3D.cpp.o
 
 .PHONY : src/render3D/render3D.o
@@ -219,6 +273,12 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/object/cube/cube.o"
+	@echo "... src/object/cube/cube.i"
+	@echo "... src/object/cube/cube.s"
+	@echo "... src/object/object.o"
+	@echo "... src/object/object.i"
+	@echo "... src/object/object.s"
 	@echo "... src/render3D/render3D.o"
 	@echo "... src/render3D/render3D.i"
 	@echo "... src/render3D/render3D.s"

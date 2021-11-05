@@ -1,7 +1,11 @@
+#ifndef matrix_HPP
+#define matrix_HPP
+
 #include <iostream>
 #include <vector>
 
-struct matrix2D_s {
+struct matrix2D_s
+{
     std::vector<std::vector<int>> matrix;
 
     static matrix2D_s Create(size_t const x, size_t const y)
@@ -19,29 +23,13 @@ struct matrix2D_s {
         return (matrix);
     }
 
-    static matrix2D_s Fill(std::vector<std::vector<int>> matrix)
+    static matrix2D_s Create(std::vector<std::vector<int>> matrix)
     {
         matrix2D_s matrix2D;
 
         matrix2D.matrix = matrix;
 
         return (matrix2D);
-    }
-
-    matrix2D_s operator=(matrix2D_s const a)
-    {
-        matrix2D_s matrix;
-
-        std::vector<std::vector<int>> matrix2D;
-        for (size_t i = 0; i < a.matrix.size(); i++) {
-            std::vector<int> matrix1D;
-            for (size_t j = 0; j < a.matrix[0].size(); j++) {
-                matrix1D.push_back(a.matrix[i][j]);
-            }
-            matrix2D.push_back(matrix1D);
-        }
-        matrix.matrix = matrix2D;
-        return (matrix);
     }
 
     matrix2D_s operator+(matrix2D_s const a)
@@ -98,29 +86,32 @@ struct matrix2D_s {
         matrix2D_s matrix = matrix2D_s::Create(a.matrix[0].size(), this->matrix.size());
 
         std::vector<std::vector<int>> matrix2D;
-        for (size_t i = 0; i < this->matrix[0].size(); i++) {
+        for (size_t i = 0; i < this->matrix.size(); i++) {
             std::vector<int> matrix1D;
-            for (size_t j = 0; j < a.matrix.size(); j++) {
+            for (size_t j = 0; j < a.matrix[0].size(); j++) {
                 int val = 0;
-                for (size_t k = 0; k < this->matrix.size(); k++) {
+                for (size_t k = 0; k < this->matrix[0].size(); k++) {
                     val += (this->matrix[i][k] * a.matrix[k][j]);
                 }
                 matrix1D.push_back(val);
             }
             matrix2D.push_back(matrix1D);
         }
+        matrix.matrix = matrix2D;
         return (matrix);
     }
 
     friend std::ostream& operator<<(std::ostream& os, const matrix2D_s &matrix)
     {
         for (size_t i = 0; i < matrix.matrix.size(); i++) {
-            os << "[";
+            os << "[ ";
             for (size_t j = 0; j < matrix.matrix[0].size(); j++) {
-                os << matrix.matrix[i][j] << ",";
+                os << matrix.matrix[i][j] << " ";
             }
             os << "]" << std::endl;
         }
         return (os);
     }
 };
+
+#endif

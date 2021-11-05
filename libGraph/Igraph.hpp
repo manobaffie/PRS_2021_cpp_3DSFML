@@ -1,11 +1,10 @@
-#include <vector>
+#ifndef Igraph_HPP
+#define Igraph_HPP
 
+#include <vector>
 #include <iostream>
 
-struct Points_s {
-    int x;
-    int y;
-};
+#include "../src/object/Point.hpp"
 
 class Igraph
 {
@@ -22,12 +21,11 @@ class Igraph
         virtual bool isOpen() = 0;
         virtual void clear() = 0;
 
-        virtual void setConvexShape(std::string id, std::vector<Points_s> Points) = 0;
-        virtual void setLineShape(std::string id, size_t size, Points_s Points1, Points_s Points2) = 0;
+        virtual void setConvexShape(std::string id, std::vector<Point2D_s> Points) = 0;
+        virtual void setLineShape(std::string id, size_t size, Point2D_s Points1, Point2D_s Points2) = 0;
 
         virtual void drawShape(std::string id) = 0;
         virtual void delShape(std::string id) = 0;
-
-
-
 };
+
+#endif

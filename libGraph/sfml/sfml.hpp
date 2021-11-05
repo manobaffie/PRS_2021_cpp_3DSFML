@@ -23,8 +23,8 @@ class sfml : public Igraph
         bool isOpen();
         void clear();
 
-        void setConvexShape(std::string id, std::vector<Points_s> Points);
-        void setLineShape(std::string id, size_t size, Points_s Points1, Points_s Points2);
+        void setConvexShape(std::string id, std::vector<Point2D_s> Points);
+        void setLineShape(std::string id, size_t size, Point2D_s Points1, Point2D_s Points2);
 
         void drawShape(std::string id);
         void delShape(std::string id);
