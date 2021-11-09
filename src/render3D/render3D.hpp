@@ -10,6 +10,9 @@ class render3D
         ~render3D();
 
         std::vector<Line2D_s> getObject2D(std::string id);
+        void addRotationXAllObject(Point3D_s rota);
+        void addPerspectiveAllObject();
+
 
 };
 

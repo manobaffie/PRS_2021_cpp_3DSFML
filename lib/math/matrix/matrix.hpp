@@ -1,7 +1,7 @@
 #ifndef matrix_HPP
 #define matrix_HPP
 
-#include <math.h>
+#include <cmath>
 #include <iostream>
 #include <vector>
 

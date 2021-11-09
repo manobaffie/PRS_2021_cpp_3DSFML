@@ -9,33 +9,30 @@
 
 #define FieldOfView 45
 
-class object
+class Object
 {
     private:
-        std::vector<Line3D_s> Shape3D;
-        std::vector<Line3D_s> Shape3DPerspective;
-        std::vector<Line2D_s> Shape2D;
-        std::string objectId;
-
+        std::string Id;
         Point3D_s Origine;
 
         double Z0;
 
+    protected:
+        std::vector<Line3D_s> Shape3D;
+
     public:
-        object();
-        ~object();
+        Object(std::string id, Point3D_s origine);
+        ~Object();
 
-        void setObject(std::string id, std::vector<Line3D_s> Points, Point3D_s origine);
+        void setObject();
 
+        std::vector<Line3D_s> getPerspective();
         std::vector<Line2D_s> getObject2D();
         std::string getId();
 
-        void addObject2D();
-        void addPerspective();
         void addOrigine();
-
-        void printObject2D();
+        void addRotationX(Point3D_s Rotation);
+        Point3D_s calcRotation(Point3D_s point, Point3D_s rota);
 
         void printAllObject3D();
-        void printAllPerspectiveObject3D();
 };

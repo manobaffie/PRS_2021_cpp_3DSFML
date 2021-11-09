@@ -1,117 +1,134 @@
-#include "object.hpp"
+#include "Object.hpp"
 
-object::object()
+Object::Object(std::string id, Point3D_s origine) :
+Id(id), Origine(origine)
 {
 }
 
-object::~object()
+Object::~Object()
 {
 }
 
-void object::setObject(std::string id, std::vector<Line3D_s> Points, Point3D_s origine)
+void Object::setObject()
 {
-    this->objectId = id;
-    this->Shape3D = Points;
-    this->Origine = origine;
-
     this->Z0 = (RerolutionX / 2.0) / tan((FieldOfView / 2.0) * PI / 180.0);
 
-    this->addPerspective();
-    this->addOrigine();
-    this->addObject2D();
+    // this->addOrigine();
 }
 
-std::string object::getId()
+std::string Object::getId()
 {
-    return (this->objectId);
+    return (this->Id);
 }
 
-std::vector<Line2D_s> object::getObject2D()
+std::vector<Line2D_s> Object::getObject2D()
 {
-    return (this->Shape2D);
-}
-
-void object::addObject2D()
-{
-    for (Line3D_s i : this->Shape3DPerspective) {
-        this->Shape2D.push_back(Line2D_s::Create (
+    std::vector<Line2D_s> output;
+    for (Line3D_s i : this->getPerspective()) {
+        output.push_back(Line2D_s::Create (
             i.id,
-
             i.size,
-
             Point2D_s::Create(
-                i.Points1.x,
-                i.Points1.y
+                i.Points1.x + 500,
+                i.Points1.y + 500
             ),
 
             Point2D_s::Create(
-                i.Points2.x,
-                i.Points2.y
+                i.Points2.x + 500,
+                i.Points2.y + 500
             )
         ));
     }
+
+    return (output);
 }
 
-void object::addPerspective()
+std::vector<Line3D_s> Object::getPerspective()
 {
-    for (Line3D_s i : this->Shape3D) {
-        this->Shape3DPerspective.push_back(Line3D_s::Create (
-            "Perspective_" + i.id,
+    std::vector<Line3D_s> output;
 
-            i.size,
-
-            Point3D_s::Create(
-                i.Points1.x * this->Z0 / (this->Z0 + i.Points1.z),
-                i.Points1.y * this->Z0 / (this->Z0 + i.Points1.z),
-                i.Points1.z,
-                "Perspective_" + i.Points1.id
-            ),
-
-            Point3D_s::Create(
-                i.Points2.x * this->Z0 / (this->Z0 + i.Points2.z),
-                i.Points2.y * this->Z0 / (this->Z0 + i.Points2.z),
-                i.Points2.z,
-                "Perspective_" + i.Points2.id
+    for (size_t i = 0; i < this->Shape3D.size(); i++) {
+        output.push_back (
+            Line3D_s::Create (
+                this->Shape3D[i].id,
+                0,
+                Point3D_s::Create (
+                    this->Shape3D[i].Points1.x * this->Z0 / (this->Z0 + this->Shape3D[i].Points1.z),
+                    this->Shape3D[i].Points1.y * this->Z0 / (this->Z0 + this->Shape3D[i].Points1.z),
+                    this->Shape3D[i].Points1.z,
+                    "Perspective_" + this->Shape3D[i].Points1.id
+                ),
+                Point3D_s::Create (
+                    this->Shape3D[i].Points2.x * this->Z0 / (this->Z0 + this->Shape3D[i].Points2.z),
+                    this->Shape3D[i].Points2.y * this->Z0 / (this->Z0 + this->Shape3D[i].Points2.z),
+                    this->Shape3D[i].Points2.z,
+                    "Perspective_" + this->Shape3D[i].Points2.id
+                )
             )
-        ));
+        );
+    }
+    return (output);
+}
+
+void Object::addOrigine()
+{
+    for (size_t i = 0; i < this->Shape3D.size(); i++) {
+        this->Shape3D[i].Points1 = Point3D_s::Create (
+            this->Shape3D[i].Points1.x + this->Origine.x,
+            this->Shape3D[i].Points1.y + this->Origine.y,
+            this->Shape3D[i].Points1.z + this->Origine.z,
+            this->Shape3D[i].Points1.id
+        );
+        this->Shape3D[i].Points2 = Point3D_s::Create (
+            this->Shape3D[i].Points2.x + this->Origine.x,
+            this->Shape3D[i].Points2.y + this->Origine.y,
+            this->Shape3D[i].Points2.z + this->Origine.z,
+            this->Shape3D[i].Points2.id
+        );
     }
 }
 
-void object::addOrigine()
+void Object::addRotationX(Point3D_s rota)
 {
-    for (size_t i = 0; i < this->Shape3DPerspective.size(); i++) {
-            this->Shape3DPerspective[i].Points1 = Point3D_s::Create (
-            this->Shape3DPerspective[i].Points1.x + this->Origine.x,
-            this->Shape3DPerspective[i].Points1.y + this->Origine.y,
-            this->Shape3DPerspective[i].Points1.z + this->Origine.z,
-            this->Shape3DPerspective[i].Points1.id
-        );
-        this->Shape3DPerspective[i].Points2 = Point3D_s::Create (
-            this->Shape3DPerspective[i].Points2.x + this->Origine.x,
-            this->Shape3DPerspective[i].Points2.y + this->Origine.y,
-            this->Shape3DPerspective[i].Points2.z + this->Origine.z,
-            this->Shape3DPerspective[i].Points2.id
-        );
+    for (size_t i = 0; i < this->Shape3D.size(); i++) {
+        this->Shape3D[i].Points1 = calcRotation(this->Shape3D[i].Points1, rota);
+        this->Shape3D[i].Points2 = calcRotation(this->Shape3D[i].Points2, rota);
     }
 }
 
-void object::printObject2D()
+Point3D_s Object::calcRotation(Point3D_s point, Point3D_s rota)
 {
+    Point3D_s output;
 
+    output.x = (
+        point.x * (std::cos(rota.z) * std::cos(rota.y)) +
+        point.y * (std::cos(rota.z) * std::cos(rota.y) *
+        std::sin(rota.x) - std::sin(rota.z) * std::cos(rota.x)) +
+        point.z * (std::cos(rota.z) * std::sin(rota.y) *
+        std::cos(rota.x) + std::sin(rota.z) * std::sin(rota.x))
+    );
+
+    output.y = (
+        point.x * (std::sin(rota.z) * std::cos(rota.y)) +
+        point.y * (std::sin(rota.z) * std::sin(rota.y) *
+        std::sin(rota.x) + std::cos(rota.z) * std::cos(rota.x)) +
+        point.z * (std::sin(rota.z) * std::sin(rota.y) *
+        std::cos(rota.x) - std::cos(rota.z) * std::sin(rota.x))
+    );
+
+    output.z = (
+        point.x * (-1 *std::sin(rota.y)) +
+        point.y * (std::cos(rota.y) * std::sin(rota.x)) +
+        point.z * (std::cos(rota.y) * std::cos(rota.x))
+    );
+
+    return (output);
 }
 
-void object::printAllObject3D()
+void Object::printAllObject3D()
 {
-    std::cout << "[" << this->objectId << "]" << std::endl;
+    std::cout << "[" << this->Id << "]" << std::endl;
     for (Line3D_s i : this->Shape3D) {
-        std::cout << i << std::endl;
-    }
-}
-
-void object::printAllPerspectiveObject3D()
-{
-    std::cout << "[" << this->objectId << "]" << std::endl;
-    for (Line3D_s i : this->Shape3DPerspective) {
         std::cout << i << std::endl;
     }
 }

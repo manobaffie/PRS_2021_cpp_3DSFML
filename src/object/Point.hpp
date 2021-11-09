@@ -41,12 +41,16 @@ struct Point3D_s
     double z;
     std::string id;
 
+    Point3D_s operator*(const Point3D_s &p)
+    {
+        return(Point3D_s::Create(this->x * p.x, this->y * p.y, this->z * p.z, p.id));
+    }
+
     friend std::ostream& operator<<(std::ostream& os, const Point3D_s &p)
     {
         os << p.id << " : [" << p.x << ";" << p.y << ";" << p.z << "]";
         return (os);
     }
-
 };
 
 struct Line2D_s

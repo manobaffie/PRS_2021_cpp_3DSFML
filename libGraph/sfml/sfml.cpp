@@ -47,21 +47,45 @@ void sfml::setConvexShape(std::string id, std::vector<Point2D_s> Points)
     for (size_t i = 0; i < Points.size(); i++) {
         convex.setPoint(i, sf::Vector2f(Points[i].x, Points[i].y));
     }
-    this->allShape.insert(std::make_pair(id, convex));
+
+    if (this->allShape.count(id) == 0) {
+        this->allShape.insert(std::make_pair(id, convex));
+    } else {
+        this->allShape[id] = convex;
+    }
 }
 
-void sfml::setLineShape(std::string id, size_t size, Point2D_s Points1, Point2D_s Points2)
+void sfml::setLineShape(std::string id, size_t BC, Point2D_s A, Point2D_s B)
 {
-    this->setConvexShape(id, 
+    double k = (BC / 2) / std::sqrt(std::pow(B.x - A.x, 2) + std::pow(B.y - A.y, 2));
+
+    Point2D_s c1 = Point2D_s::Create(
+        -1 * k * A.y + k * B.y + B.x,
+        k * A.x - k * B.x + B.y
+    );
+
+    Point2D_s c2 = Point2D_s::Create(
+        2 * B.x - c1.x,
+        2 * B.y - c1.y
+    );
+
+    Point2D_s c4 = Point2D_s::Create(
+        A.x + B.x - c2.x,
+        A.y + B.y - c2.y
+    );
+
+    Point2D_s c3 = Point2D_s::Create(
+        A.x + B.x - c1.x,
+        A.y + B.y - c1.y
+    );
+
+    this->setConvexShape(
+        id,
         {
-            // {int(Points1.x - 5), int(Points1.y - 9)},
-            // {int(Points1.x + 6), int(Points1.y + 7)},
-            // {int(Points2.x + 7), int(Points2.y + 5)},
-            // {int(Points2.x - 8), int(Points2.y - 4)}
-            {int(Points1.x - (size / 2)), int(Points1.y - (size / 2))},
-            {int(Points1.x + (size / 2)), int(Points1.y + (size / 2))},
-            {int(Points2.x + (size / 2)), int(Points2.y + (size / 2))},
-            {int(Points2.x - (size / 2)), int(Points2.y - (size / 2))}
+            c1,
+            c2,
+            c3,
+            c4
         }
     );
 }
@@ -81,6 +105,26 @@ void sfml::drawAllShape()
 
     for(std::map<std::string, sf::ConvexShape>::const_iterator it = this->allShape.begin() ; it != this->allShape.end() ; ++it) {
         this->drawShape(it->first);
+    }
+}
+
+void sfml::startClock(std::string id)
+{
+    sf::Clock c;
+    this->clock[id] = c;
+}
+
+void sfml::restartClock(std::string id)
+{
+    this->clock[id].restart();
+}
+
+float sfml::getClock(std::string id)
+{
+    if (this->clock.find(id) != this->clock.end()) {
+        return (sf::Time(this->clock[id].getElapsedTime()).asSeconds());
+    } else {
+        return (-1);
     }
 }
 

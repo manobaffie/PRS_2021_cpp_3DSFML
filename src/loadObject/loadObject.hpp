@@ -5,15 +5,18 @@
 class loadObject
 {
     private:
-        std::map<std::string, object*> allObject;
+        std::map<std::string, Object*> allObject;
 
     public:
         loadObject();
         ~loadObject();
 
-        void addObject(object *Obj);
+        void addObject(Object *Obj);
 
         void printAllObject();
-        void printAllPerspectiveObject3D();
         std::vector<Line2D_s> getObject2D(std::string id);
+        void addRotationXAllObject(Point3D_s rota);
+        void addPerspectiveAllObject();
+
+
 };

@@ -28,6 +28,10 @@ class Igraph
         virtual void delShape(std::string id) = 0;
 
         virtual void drawAllShape() = 0;
+
+        virtual void startClock(std::string id) = 0;
+        virtual void restartClock(std::string id) = 0;
+        virtual float getClock(std::string id) = 0;
 };
 
 #endif

@@ -34,15 +34,15 @@ CMakeFiles/3Dlib.dir/src/main.cpp.o: ../src/render3D/render3D.hpp
 CMakeFiles/3Dlib.dir/src/object/cube/cube.cpp.o: ../lib/math/matrix/matrix.hpp
 CMakeFiles/3Dlib.dir/src/object/cube/cube.cpp.o: ../libGraph/Igraph.hpp
 CMakeFiles/3Dlib.dir/src/object/cube/cube.cpp.o: ../src/object/Point.hpp
+CMakeFiles/3Dlib.dir/src/object/cube/cube.cpp.o: ../src/object/cube/Cube.hpp
 CMakeFiles/3Dlib.dir/src/object/cube/cube.cpp.o: ../src/object/cube/cube.cpp
-CMakeFiles/3Dlib.dir/src/object/cube/cube.cpp.o: ../src/object/cube/cube.hpp
 CMakeFiles/3Dlib.dir/src/object/cube/cube.cpp.o: ../src/object/object.hpp
 
 CMakeFiles/3Dlib.dir/src/object/object.cpp.o: ../lib/math/matrix/matrix.hpp
 CMakeFiles/3Dlib.dir/src/object/object.cpp.o: ../libGraph/Igraph.hpp
+CMakeFiles/3Dlib.dir/src/object/object.cpp.o: ../src/object/Object.hpp
 CMakeFiles/3Dlib.dir/src/object/object.cpp.o: ../src/object/Point.hpp
 CMakeFiles/3Dlib.dir/src/object/object.cpp.o: ../src/object/object.cpp
-CMakeFiles/3Dlib.dir/src/object/object.cpp.o: ../src/object/object.hpp
 
 CMakeFiles/3Dlib.dir/src/render3D/render3D.cpp.o: ../lib/math/matrix/matrix.hpp
 CMakeFiles/3Dlib.dir/src/render3D/render3D.cpp.o: ../libGraph/Igraph.hpp

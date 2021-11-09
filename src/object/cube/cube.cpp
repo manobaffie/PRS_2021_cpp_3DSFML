@@ -1,74 +1,64 @@
-#include "cube.hpp"
+#include "Cube.hpp"
 
-cube::cube(std::string id, Point3D_s origine, size_t size) :
-cubeId(id), Size(size)
+Cube::Cube(std::string id, Point3D_s origine, size_t size) :
+Object(id, origine), Size(size)
 {
-    // this->Origine = new Point3D_s(Point3D_s::Create(origine.x, origine.y, origine.z, origine.id));
-    this->Origine = Point3D_s::Create(origine.x, origine.y, origine.z, origine.id);
+    this->setPoint3D();
 
-    this->setPresetLine3D();
-    this->setLine3D();
+    this->setLine3D("A", "B");
+    this->setLine3D("B", "C");
+    this->setLine3D("C", "D");
+    this->setLine3D("D", "A");
 
-    this->setObject(id, this->getCubePoints(), this->Origine);
+    this->setLine3D("E", "F");
+    this->setLine3D("F", "G");
+    this->setLine3D("G", "H");
+    this->setLine3D("H", "E");
+
+    this->setLine3D("A", "E");
+    this->setLine3D("B", "F");
+    this->setLine3D("C", "G");
+    this->setLine3D("D", "H");
+
+    this->setObject();
 }
 
-cube::~cube()
+Cube::~Cube()
 {
 }
 
-std::vector<Line3D_s> cube::getCubePoints()
+void Cube::setPoint3D()
 {
-    return (this->cubePoints);
+    this->cubePoint.push_back(Point3D_s::Create(-1 * double(this->Size / 2), -1 * double(this->Size / 2), -1 * (double(this->Size / 2)), "A"));
+    this->cubePoint.push_back(Point3D_s::Create(double(this->Size / 2), -1 * double(this->Size / 2), -1 * double(this->Size / 2), "B"));
+    this->cubePoint.push_back(Point3D_s::Create(double(this->Size / 2), -1 * double(this->Size / 2), double(this->Size / 2), "C"));
+    this->cubePoint.push_back(Point3D_s::Create(-1 * double(this->Size / 2), -1 * double(this->Size / 2), double(this->Size / 2), "D"));
+
+    this->cubePoint.push_back(Point3D_s::Create(-1 * double(this->Size / 2), double(this->Size / 2), -1 * (double(this->Size / 2)), "E"));
+    this->cubePoint.push_back(Point3D_s::Create(double(this->Size / 2), double(this->Size / 2), -1 * double(this->Size / 2), "F"));
+    this->cubePoint.push_back(Point3D_s::Create(double(this->Size / 2), double(this->Size / 2), double(this->Size / 2), "G"));
+    this->cubePoint.push_back(Point3D_s::Create(-1 * double(this->Size / 2), double(this->Size / 2), double(this->Size / 2), "H"));
 }
 
-void cube::setLine3D()
+void Cube::setLine3D(std::string Point1, std::string Point2)
 {
-    this->setLine3DFace(0, 4, 1, 0, 3);
-    this->setLine3DFace(4, 8, 1, 4, 7);
-    this->setLine3DFace(0, 4, 4, 7, 7);
-}
+    Line3D_s LineTmp;
 
-void cube::setLine3DFace(int range0, int range1, int add, int init, int limit)
-{
-    for (size_t i = range0; i < range1; i++) {
-        size_t j = (i + add > limit) ? init : i + add;
-
-        this->cubePoints.push_back(
-            Line3D_s::Create (
-                this->cubeId + "_" + this->cubePreset[i].id + this->cubePreset[j].id,
-                this->Size,
-                Point3D_s::Create (
-                    this->cubePreset[i].x * this->Size,
-                    this->cubePreset[i].y * this->Size, 
-                    this->cubePreset[i].z * this->Size,
-                    this->cubePreset[i].id
-                ),
-                Point3D_s::Create (
-                    this->cubePreset[j].x * this->Size,
-                    this->cubePreset[j].y * this->Size,
-                    this->cubePreset[j].z * this->Size,
-                    this->cubePreset[j].id
-                )
-            )
-        );
+    for (Point3D_s i : this->cubePoint) {
+        if (i.id == Point1) {
+            LineTmp.Points1 = Point3D_s::Create(i.x, i.y, i.z, i.id);
+        }
+        if (i.id == Point2) {
+            LineTmp.Points2 = Point3D_s::Create(i.x, i.y, i.z, i.id);
+        }
     }
-}
 
-void cube::setPresetLine3D()
-{
-    this->cubePreset = {
-        Point3D_s::Create(0, 0, 0, "A"),
-        Point3D_s::Create(1, 0, 0, "B"),
-        Point3D_s::Create(1, 0, 1, "C"),
-        Point3D_s::Create(0, 0, 1, "D"),
-
-        Point3D_s::Create(0, 1, 0, "E"),
-        Point3D_s::Create(1, 1, 0, "F"),
-        Point3D_s::Create(1, 1, 1, "G"),
-        Point3D_s::Create(0, 1, 1, "H"),
-    };
-}
-
-void cube::printCube()
-{
+    this->Shape3D.push_back (
+        Line3D_s::Create (
+            Point1 + Point2, 
+            0, 
+            Point3D_s::Create(LineTmp.Points1.x, LineTmp.Points1.y, LineTmp.Points1.z, LineTmp.Points1.id),
+            Point3D_s::Create(LineTmp.Points2.x, LineTmp.Points2.y, LineTmp.Points2.z, LineTmp.Points2.id)
+        )
+    );
 }

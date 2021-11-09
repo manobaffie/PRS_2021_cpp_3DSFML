@@ -4,15 +4,9 @@ core::core()
 {
     LoadLib<Igraph> test("../libGraph/sfml/sfml.so");
     this->graph = test.init();
-    this->graph->setWindow(5, "", {1080, 920});
+    this->graph->setWindow(25, "", {1080, 920});
 
     this->addtOBJ("FirstCube");
-    // this->addtOBJ("FirstCube1");
-    // this->addtOBJ("FirstCube2");
-    // this->addtOBJ("FirstCube3");
-    // this->addtOBJ("FirstCube4");
-    // this->addtOBJ("FirstCube5");
-
     this->start();
 }
 
@@ -35,9 +29,19 @@ core::~core()
 
 void core::start()
 {
+    this->graph->startClock("FirstCubeRotation");
+
     while (this->graph->isOpen()) {
         this->graph->pollEvent();
         this->graph->clear();
+
+        if (this->graph->getClock("FirstCubeRotation") > 0.01) {
+            this->rd.addRotationXAllObject(Point3D_s::Create(0, 0.1, 0, ""));
+            this->addtOBJ("FirstCube");
+            this->graph->restartClock("FirstCubeRotation");
+        }
+
+
         this->graph->drawAllShape();
         this->graph->display();
     }

@@ -9,6 +9,7 @@ class sfml : public Igraph
         sf::RenderWindow window;
         sf::Event event;
         std::map<std::string, sf::ConvexShape> allShape;
+        std::map<std::string, sf::Clock> clock;
 
     public:
         sfml(int x, int y, std::string name);
@@ -30,5 +31,9 @@ class sfml : public Igraph
         void delShape(std::string id);
 
         void drawAllShape();
+
+        void startClock(std::string id);
+        void restartClock(std::string id);
+        float getClock(std::string id);
 };
 

@@ -1,24 +1,18 @@
 #include "../object.hpp"
 
-class cube : public object
+// pass all the variable in the object class
+
+class Cube : public Object
 {
     private:
-        std::vector<Point3D_s> cubePreset;
-        std::vector<Line3D_s> cubePoints;
+        std::vector<Point3D_s> cubePoint;
 
-        std::string cubeId;
-        Point3D_s Origine;
         size_t Size;
 
     public:
-        cube(std::string id, Point3D_s origine, size_t size);
-        ~cube();
+        Cube(std::string id, Point3D_s origine, size_t size);
+        ~Cube();
 
-        std::vector<Line3D_s> getCubePoints();
-
-        void setLine3D();
-        void setLine3DFace(int range0, int range1, int add, int init, int limit);
-        void setPresetLine3D();
-
-        void printCube();
+        void setPoint3D();
+        void setLine3D(std::string Point1, std::string Point2);
 };
