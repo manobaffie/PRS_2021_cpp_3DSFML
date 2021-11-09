@@ -1,14 +1,15 @@
 #include "cube.hpp"
 
 cube::cube(std::string id, Point3D_s origine, size_t size) :
-object(), cubeId(id), Size(size)
+cubeId(id), Size(size)
 {
-    this->Origine = new Point3D_s(Point3D_s::Create(origine.x, origine.y, origine.z, origine.id));
+    // this->Origine = new Point3D_s(Point3D_s::Create(origine.x, origine.y, origine.z, origine.id));
+    this->Origine = Point3D_s::Create(origine.x, origine.y, origine.z, origine.id);
 
     this->setPresetLine3D();
     this->setLine3D();
 
-    this->setObject(id, this->getCubePoints());
+    this->setObject(id, this->getCubePoints(), this->Origine);
 }
 
 cube::~cube()
@@ -34,19 +35,19 @@ void cube::setLine3DFace(int range0, int range1, int add, int init, int limit)
 
         this->cubePoints.push_back(
             Line3D_s::Create (
-                this->cubeId + "_" + cubePreset[i].id + cubePreset[j].id,
+                this->cubeId + "_" + this->cubePreset[i].id + this->cubePreset[j].id,
                 this->Size,
                 Point3D_s::Create (
-                    Origine->x + cubePreset[i].x * this->Size,
-                    Origine->y  + cubePreset[i].y * this->Size, 
-                    Origine->z  + cubePreset[i].z * this->Size,
-                    cubePreset[i].id
+                    this->cubePreset[i].x * this->Size,
+                    this->cubePreset[i].y * this->Size, 
+                    this->cubePreset[i].z * this->Size,
+                    this->cubePreset[i].id
                 ),
                 Point3D_s::Create (
-                    Origine->x + cubePreset[j].x * this->Size,
-                    Origine->y  + cubePreset[j].y * this->Size,
-                    Origine->z  + cubePreset[j].z * this->Size,
-                    cubePreset[j].id
+                    this->cubePreset[j].x * this->Size,
+                    this->cubePreset[j].y * this->Size,
+                    this->cubePreset[j].z * this->Size,
+                    this->cubePreset[j].id
                 )
             )
         );

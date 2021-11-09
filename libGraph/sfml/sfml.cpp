@@ -54,6 +54,10 @@ void sfml::setLineShape(std::string id, size_t size, Point2D_s Points1, Point2D_
 {
     this->setConvexShape(id, 
         {
+            // {int(Points1.x - 5), int(Points1.y - 9)},
+            // {int(Points1.x + 6), int(Points1.y + 7)},
+            // {int(Points2.x + 7), int(Points2.y + 5)},
+            // {int(Points2.x - 8), int(Points2.y - 4)}
             {int(Points1.x - (size / 2)), int(Points1.y - (size / 2))},
             {int(Points1.x + (size / 2)), int(Points1.y + (size / 2))},
             {int(Points2.x + (size / 2)), int(Points2.y + (size / 2))},

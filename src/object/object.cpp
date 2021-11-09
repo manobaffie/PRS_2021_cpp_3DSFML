@@ -8,14 +8,17 @@ object::~object()
 {
 }
 
-void object::setObject(std::string id, std::vector<Line3D_s> Points)
+void object::setObject(std::string id, std::vector<Line3D_s> Points, Point3D_s origine)
 {
     this->objectId = id;
     this->Shape3D = Points;
+    this->Origine = origine;
 
     this->Z0 = (RerolutionX / 2.0) / tan((FieldOfView / 2.0) * PI / 180.0);
-    this->makePerspective();
-    this->makeObject2D();
+
+    this->addPerspective();
+    this->addOrigine();
+    this->addObject2D();
 }
 
 std::string object::getId()
@@ -28,7 +31,7 @@ std::vector<Line2D_s> object::getObject2D()
     return (this->Shape2D);
 }
 
-void object::makeObject2D()
+void object::addObject2D()
 {
     for (Line3D_s i : this->Shape3DPerspective) {
         this->Shape2D.push_back(Line2D_s::Create (
@@ -49,7 +52,7 @@ void object::makeObject2D()
     }
 }
 
-void object::makePerspective()
+void object::addPerspective()
 {
     for (Line3D_s i : this->Shape3D) {
         this->Shape3DPerspective.push_back(Line3D_s::Create (
@@ -71,6 +74,24 @@ void object::makePerspective()
                 "Perspective_" + i.Points2.id
             )
         ));
+    }
+}
+
+void object::addOrigine()
+{
+    for (size_t i = 0; i < this->Shape3DPerspective.size(); i++) {
+            this->Shape3DPerspective[i].Points1 = Point3D_s::Create (
+            this->Shape3DPerspective[i].Points1.x + this->Origine.x,
+            this->Shape3DPerspective[i].Points1.y + this->Origine.y,
+            this->Shape3DPerspective[i].Points1.z + this->Origine.z,
+            this->Shape3DPerspective[i].Points1.id
+        );
+        this->Shape3DPerspective[i].Points2 = Point3D_s::Create (
+            this->Shape3DPerspective[i].Points2.x + this->Origine.x,
+            this->Shape3DPerspective[i].Points2.y + this->Origine.y,
+            this->Shape3DPerspective[i].Points2.z + this->Origine.z,
+            this->Shape3DPerspective[i].Points2.id
+        );
     }
 }
 

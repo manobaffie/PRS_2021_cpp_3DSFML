@@ -17,19 +17,22 @@ class object
         std::vector<Line2D_s> Shape2D;
         std::string objectId;
 
+        Point3D_s Origine;
+
         double Z0;
 
     public:
         object();
         ~object();
 
-        void setObject(std::string id, std::vector<Line3D_s> Points);
+        void setObject(std::string id, std::vector<Line3D_s> Points, Point3D_s origine);
 
         std::vector<Line2D_s> getObject2D();
         std::string getId();
 
-        void makeObject2D();
-        void makePerspective();
+        void addObject2D();
+        void addPerspective();
+        void addOrigine();
 
         void printObject2D();
 

@@ -7,7 +7,7 @@ class cube : public object
         std::vector<Line3D_s> cubePoints;
 
         std::string cubeId;
-        Point3D_s *Origine;
+        Point3D_s Origine;
         size_t Size;
 
     public:
