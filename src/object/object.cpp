@@ -53,15 +53,15 @@ const std::vector<Line3D_s> Object::getPerspective()
                     this->Shape3D[i].Points1.x * this->Z0 / (this->Z0 + this->Shape3D[i].Points1.z),
                     this->Shape3D[i].Points1.y * this->Z0 / (this->Z0 + this->Shape3D[i].Points1.z),
                     this->Shape3D[i].Points1.z,
-                    "Perspective_" + this->Shape3D[i].Points1.id
+                    this->Shape3D[i].Points1.id
                 ),
                 Point3D_s::Create (
                     this->Shape3D[i].Points2.x * this->Z0 / (this->Z0 + this->Shape3D[i].Points2.z),
                     this->Shape3D[i].Points2.y * this->Z0 / (this->Z0 + this->Shape3D[i].Points2.z),
                     this->Shape3D[i].Points2.z,
-                    "Perspective_" + this->Shape3D[i].Points2.id
+                    this->Shape3D[i].Points2.id
                 ),
-                this->Shape3D[i].id
+                this->Id + this->Shape3D[i].id
             )
         );
     }

@@ -10,7 +10,9 @@ class Engine
 
 
         std::map<std::string, Object*> allObject;
+
         Object *object;
+        Object *object1;
 
     public:
         Engine(Igraph *graph);
