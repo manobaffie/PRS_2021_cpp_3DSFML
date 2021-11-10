@@ -12,11 +12,11 @@ class sfml : public Igraph
         std::map<std::string, sf::Clock> clock;
 
     public:
-        sfml(int x, int y, std::string name);
+        sfml(const int x, const int y, const std::string name);
         sfml() = default;
         ~sfml();
 
-        void setWindow(int fps, std::string title, std::vector<int> size);
+        void setWindow(const int &fps, const std::string &title, const std::vector<int> &size);
 
         void pollEvent();
 
@@ -24,16 +24,17 @@ class sfml : public Igraph
         bool isOpen();
         void clear();
 
-        void setConvexShape(std::string id, std::vector<Point2D_s> Points);
-        void setLineShape(std::string id, size_t size, Point2D_s Points1, Point2D_s Points2);
+        void setConvexShape(const std::string &id, const std::vector<Point2D_s> &Points);
+        void setLineShape(const std::string &id, const size_t &size, const Point2D_s &Points1, const Point2D_s &Points2);
+        void setAllLineShape(const std::vector<Line2D_s> &Lines);
 
-        void drawShape(std::string id);
-        void delShape(std::string id);
+        void drawShape(const std::string &id);
+        void delShape(const std::string &id);
 
         void drawAllShape();
 
-        void startClock(std::string id);
-        void restartClock(std::string id);
-        float getClock(std::string id);
+        void startClock(const std::string &id);
+        void restartClock(const std::string &id);
+        float getClock(const std::string &id);
 };
 

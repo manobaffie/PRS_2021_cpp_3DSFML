@@ -123,59 +123,113 @@ depend:
 	$(MAKE) -f CMakeFiles/3Dlib.dir/build.make CMakeFiles/3Dlib.dir/build
 .PHONY : 3Dlib/fast
 
-src/core/core.o: src/core/core.cpp.o
+src/Core/Core.o: src/Core/Core.cpp.o
 
-.PHONY : src/core/core.o
-
-# target to build an object file
-src/core/core.cpp.o:
-	$(MAKE) -f CMakeFiles/3Dlib.dir/build.make CMakeFiles/3Dlib.dir/src/core/core.cpp.o
-.PHONY : src/core/core.cpp.o
-
-src/core/core.i: src/core/core.cpp.i
-
-.PHONY : src/core/core.i
-
-# target to preprocess a source file
-src/core/core.cpp.i:
-	$(MAKE) -f CMakeFiles/3Dlib.dir/build.make CMakeFiles/3Dlib.dir/src/core/core.cpp.i
-.PHONY : src/core/core.cpp.i
-
-src/core/core.s: src/core/core.cpp.s
-
-.PHONY : src/core/core.s
-
-# target to generate assembly for a file
-src/core/core.cpp.s:
-	$(MAKE) -f CMakeFiles/3Dlib.dir/build.make CMakeFiles/3Dlib.dir/src/core/core.cpp.s
-.PHONY : src/core/core.cpp.s
-
-src/loadObject/loadObject.o: src/loadObject/loadObject.cpp.o
-
-.PHONY : src/loadObject/loadObject.o
+.PHONY : src/Core/Core.o
 
 # target to build an object file
-src/loadObject/loadObject.cpp.o:
-	$(MAKE) -f CMakeFiles/3Dlib.dir/build.make CMakeFiles/3Dlib.dir/src/loadObject/loadObject.cpp.o
-.PHONY : src/loadObject/loadObject.cpp.o
+src/Core/Core.cpp.o:
+	$(MAKE) -f CMakeFiles/3Dlib.dir/build.make CMakeFiles/3Dlib.dir/src/Core/Core.cpp.o
+.PHONY : src/Core/Core.cpp.o
 
-src/loadObject/loadObject.i: src/loadObject/loadObject.cpp.i
+src/Core/Core.i: src/Core/Core.cpp.i
 
-.PHONY : src/loadObject/loadObject.i
+.PHONY : src/Core/Core.i
 
 # target to preprocess a source file
-src/loadObject/loadObject.cpp.i:
-	$(MAKE) -f CMakeFiles/3Dlib.dir/build.make CMakeFiles/3Dlib.dir/src/loadObject/loadObject.cpp.i
-.PHONY : src/loadObject/loadObject.cpp.i
+src/Core/Core.cpp.i:
+	$(MAKE) -f CMakeFiles/3Dlib.dir/build.make CMakeFiles/3Dlib.dir/src/Core/Core.cpp.i
+.PHONY : src/Core/Core.cpp.i
 
-src/loadObject/loadObject.s: src/loadObject/loadObject.cpp.s
+src/Core/Core.s: src/Core/Core.cpp.s
 
-.PHONY : src/loadObject/loadObject.s
+.PHONY : src/Core/Core.s
 
 # target to generate assembly for a file
-src/loadObject/loadObject.cpp.s:
-	$(MAKE) -f CMakeFiles/3Dlib.dir/build.make CMakeFiles/3Dlib.dir/src/loadObject/loadObject.cpp.s
-.PHONY : src/loadObject/loadObject.cpp.s
+src/Core/Core.cpp.s:
+	$(MAKE) -f CMakeFiles/3Dlib.dir/build.make CMakeFiles/3Dlib.dir/src/Core/Core.cpp.s
+.PHONY : src/Core/Core.cpp.s
+
+src/Engine/Engine.o: src/Engine/Engine.cpp.o
+
+.PHONY : src/Engine/Engine.o
+
+# target to build an object file
+src/Engine/Engine.cpp.o:
+	$(MAKE) -f CMakeFiles/3Dlib.dir/build.make CMakeFiles/3Dlib.dir/src/Engine/Engine.cpp.o
+.PHONY : src/Engine/Engine.cpp.o
+
+src/Engine/Engine.i: src/Engine/Engine.cpp.i
+
+.PHONY : src/Engine/Engine.i
+
+# target to preprocess a source file
+src/Engine/Engine.cpp.i:
+	$(MAKE) -f CMakeFiles/3Dlib.dir/build.make CMakeFiles/3Dlib.dir/src/Engine/Engine.cpp.i
+.PHONY : src/Engine/Engine.cpp.i
+
+src/Engine/Engine.s: src/Engine/Engine.cpp.s
+
+.PHONY : src/Engine/Engine.s
+
+# target to generate assembly for a file
+src/Engine/Engine.cpp.s:
+	$(MAKE) -f CMakeFiles/3Dlib.dir/build.make CMakeFiles/3Dlib.dir/src/Engine/Engine.cpp.s
+.PHONY : src/Engine/Engine.cpp.s
+
+src/Object/Cube/Cube.o: src/Object/Cube/Cube.cpp.o
+
+.PHONY : src/Object/Cube/Cube.o
+
+# target to build an object file
+src/Object/Cube/Cube.cpp.o:
+	$(MAKE) -f CMakeFiles/3Dlib.dir/build.make CMakeFiles/3Dlib.dir/src/Object/Cube/Cube.cpp.o
+.PHONY : src/Object/Cube/Cube.cpp.o
+
+src/Object/Cube/Cube.i: src/Object/Cube/Cube.cpp.i
+
+.PHONY : src/Object/Cube/Cube.i
+
+# target to preprocess a source file
+src/Object/Cube/Cube.cpp.i:
+	$(MAKE) -f CMakeFiles/3Dlib.dir/build.make CMakeFiles/3Dlib.dir/src/Object/Cube/Cube.cpp.i
+.PHONY : src/Object/Cube/Cube.cpp.i
+
+src/Object/Cube/Cube.s: src/Object/Cube/Cube.cpp.s
+
+.PHONY : src/Object/Cube/Cube.s
+
+# target to generate assembly for a file
+src/Object/Cube/Cube.cpp.s:
+	$(MAKE) -f CMakeFiles/3Dlib.dir/build.make CMakeFiles/3Dlib.dir/src/Object/Cube/Cube.cpp.s
+.PHONY : src/Object/Cube/Cube.cpp.s
+
+src/Object/Object.o: src/Object/Object.cpp.o
+
+.PHONY : src/Object/Object.o
+
+# target to build an object file
+src/Object/Object.cpp.o:
+	$(MAKE) -f CMakeFiles/3Dlib.dir/build.make CMakeFiles/3Dlib.dir/src/Object/Object.cpp.o
+.PHONY : src/Object/Object.cpp.o
+
+src/Object/Object.i: src/Object/Object.cpp.i
+
+.PHONY : src/Object/Object.i
+
+# target to preprocess a source file
+src/Object/Object.cpp.i:
+	$(MAKE) -f CMakeFiles/3Dlib.dir/build.make CMakeFiles/3Dlib.dir/src/Object/Object.cpp.i
+.PHONY : src/Object/Object.cpp.i
+
+src/Object/Object.s: src/Object/Object.cpp.s
+
+.PHONY : src/Object/Object.s
+
+# target to generate assembly for a file
+src/Object/Object.cpp.s:
+	$(MAKE) -f CMakeFiles/3Dlib.dir/build.make CMakeFiles/3Dlib.dir/src/Object/Object.cpp.s
+.PHONY : src/Object/Object.cpp.s
 
 src/main.o: src/main.cpp.o
 
@@ -204,87 +258,6 @@ src/main.cpp.s:
 	$(MAKE) -f CMakeFiles/3Dlib.dir/build.make CMakeFiles/3Dlib.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
-src/object/cube/cube.o: src/object/cube/cube.cpp.o
-
-.PHONY : src/object/cube/cube.o
-
-# target to build an object file
-src/object/cube/cube.cpp.o:
-	$(MAKE) -f CMakeFiles/3Dlib.dir/build.make CMakeFiles/3Dlib.dir/src/object/cube/cube.cpp.o
-.PHONY : src/object/cube/cube.cpp.o
-
-src/object/cube/cube.i: src/object/cube/cube.cpp.i
-
-.PHONY : src/object/cube/cube.i
-
-# target to preprocess a source file
-src/object/cube/cube.cpp.i:
-	$(MAKE) -f CMakeFiles/3Dlib.dir/build.make CMakeFiles/3Dlib.dir/src/object/cube/cube.cpp.i
-.PHONY : src/object/cube/cube.cpp.i
-
-src/object/cube/cube.s: src/object/cube/cube.cpp.s
-
-.PHONY : src/object/cube/cube.s
-
-# target to generate assembly for a file
-src/object/cube/cube.cpp.s:
-	$(MAKE) -f CMakeFiles/3Dlib.dir/build.make CMakeFiles/3Dlib.dir/src/object/cube/cube.cpp.s
-.PHONY : src/object/cube/cube.cpp.s
-
-src/object/object.o: src/object/object.cpp.o
-
-.PHONY : src/object/object.o
-
-# target to build an object file
-src/object/object.cpp.o:
-	$(MAKE) -f CMakeFiles/3Dlib.dir/build.make CMakeFiles/3Dlib.dir/src/object/object.cpp.o
-.PHONY : src/object/object.cpp.o
-
-src/object/object.i: src/object/object.cpp.i
-
-.PHONY : src/object/object.i
-
-# target to preprocess a source file
-src/object/object.cpp.i:
-	$(MAKE) -f CMakeFiles/3Dlib.dir/build.make CMakeFiles/3Dlib.dir/src/object/object.cpp.i
-.PHONY : src/object/object.cpp.i
-
-src/object/object.s: src/object/object.cpp.s
-
-.PHONY : src/object/object.s
-
-# target to generate assembly for a file
-src/object/object.cpp.s:
-	$(MAKE) -f CMakeFiles/3Dlib.dir/build.make CMakeFiles/3Dlib.dir/src/object/object.cpp.s
-.PHONY : src/object/object.cpp.s
-
-src/render3D/render3D.o: src/render3D/render3D.cpp.o
-
-.PHONY : src/render3D/render3D.o
-
-# target to build an object file
-src/render3D/render3D.cpp.o:
-	$(MAKE) -f CMakeFiles/3Dlib.dir/build.make CMakeFiles/3Dlib.dir/src/render3D/render3D.cpp.o
-.PHONY : src/render3D/render3D.cpp.o
-
-src/render3D/render3D.i: src/render3D/render3D.cpp.i
-
-.PHONY : src/render3D/render3D.i
-
-# target to preprocess a source file
-src/render3D/render3D.cpp.i:
-	$(MAKE) -f CMakeFiles/3Dlib.dir/build.make CMakeFiles/3Dlib.dir/src/render3D/render3D.cpp.i
-.PHONY : src/render3D/render3D.cpp.i
-
-src/render3D/render3D.s: src/render3D/render3D.cpp.s
-
-.PHONY : src/render3D/render3D.s
-
-# target to generate assembly for a file
-src/render3D/render3D.cpp.s:
-	$(MAKE) -f CMakeFiles/3Dlib.dir/build.make CMakeFiles/3Dlib.dir/src/render3D/render3D.cpp.s
-.PHONY : src/render3D/render3D.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -294,24 +267,21 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... 3Dlib"
-	@echo "... src/core/core.o"
-	@echo "... src/core/core.i"
-	@echo "... src/core/core.s"
-	@echo "... src/loadObject/loadObject.o"
-	@echo "... src/loadObject/loadObject.i"
-	@echo "... src/loadObject/loadObject.s"
+	@echo "... src/Core/Core.o"
+	@echo "... src/Core/Core.i"
+	@echo "... src/Core/Core.s"
+	@echo "... src/Engine/Engine.o"
+	@echo "... src/Engine/Engine.i"
+	@echo "... src/Engine/Engine.s"
+	@echo "... src/Object/Cube/Cube.o"
+	@echo "... src/Object/Cube/Cube.i"
+	@echo "... src/Object/Cube/Cube.s"
+	@echo "... src/Object/Object.o"
+	@echo "... src/Object/Object.i"
+	@echo "... src/Object/Object.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
-	@echo "... src/object/cube/cube.o"
-	@echo "... src/object/cube/cube.i"
-	@echo "... src/object/cube/cube.s"
-	@echo "... src/object/object.o"
-	@echo "... src/object/object.i"
-	@echo "... src/object/object.s"
-	@echo "... src/render3D/render3D.o"
-	@echo "... src/render3D/render3D.i"
-	@echo "... src/render3D/render3D.s"
 .PHONY : help
 
 

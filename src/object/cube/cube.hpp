@@ -1,4 +1,4 @@
-#include "../object.hpp"
+#include "../Object.hpp"
 
 // pass all the variable in the object class
 
@@ -10,7 +10,7 @@ class Cube : public Object
         size_t Size;
 
     public:
-        Cube(std::string id, Point3D_s origine, size_t size);
+        Cube(const std::string &id, const Point3D_s &origine, const size_t &size);
         ~Cube();
 
         void setPoint3D();

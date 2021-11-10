@@ -7,13 +7,18 @@
 
 struct Point2D_s
 {
-    static Point2D_s Create(int x, int y)
+    static Point2D_s Create(int x, int y, std::string id = "")
     {
-        return (Point2D_s({x, y}));
+        Point2D_s Point;
+        Point.x = x;
+        Point.y = y;
+        Point.id = id;
+        return (Point);
     }
 
     int x;
     int y;
+    std::string id;
 
     friend std::ostream& operator<<(std::ostream& os, const Point2D_s &p)
     {
@@ -24,7 +29,7 @@ struct Point2D_s
 
 struct Point3D_s
 {
-    static Point3D_s Create(double x, double y, double z, std::string id)
+    static Point3D_s Create(double x, double y, double z, std::string id = "")
     {
         Point3D_s Point;
 
@@ -43,7 +48,7 @@ struct Point3D_s
 
     Point3D_s operator*(const Point3D_s &p)
     {
-        return(Point3D_s::Create(this->x * p.x, this->y * p.y, this->z * p.z, p.id));
+        return(Point3D_s::Create(this->x * p.x, this->y * p.y, this->z * p.z, this->id));
     }
 
     friend std::ostream& operator<<(std::ostream& os, const Point3D_s &p)
@@ -55,19 +60,18 @@ struct Point3D_s
 
 struct Line2D_s
 {
-    static Line2D_s Create(std::string id, size_t size, Point2D_s p1, Point2D_s p2)
+    static Line2D_s Create(Point2D_s p1, Point2D_s p2, std::string id = "", size_t size = 0)
     {
-        Line2D_s l;
-        l.id = id;
-        l.size = size;
-        l.Points1 = p1;
-        l.Points2 = p2;
-        return (l);
+        Line2D_s Line;
+        Line.id = id;
+        Line.size = size;
+        Line.Points1 = p1;
+        Line.Points2 = p2;
+        return (Line);
     }
 
     std::string id;
     size_t size;
-
     Point2D_s Points1;
     Point2D_s Points2;
 
@@ -80,19 +84,18 @@ struct Line2D_s
 
 struct Line3D_s
 {
-    static Line3D_s Create(std::string id, size_t size, Point3D_s p1, Point3D_s p2)
+    static Line3D_s Create(Point3D_s p1, Point3D_s p2, std::string id = "", size_t size = 0)
     {
-        Line3D_s l;
-        l.id = id;
-        l.size = size;
-        l.Points1 = p1;
-        l.Points2 = p2;
-        return (l);
+        Line3D_s Line;
+        Line.id = id;
+        Line.size = size;
+        Line.Points1 = p1;
+        Line.Points2 = p2;
+        return (Line);
     }
 
     std::string id;
     size_t size;
-
     Point3D_s Points1;
     Point3D_s Points2;
 

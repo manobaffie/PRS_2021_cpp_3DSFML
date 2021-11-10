@@ -1,17 +1,18 @@
 #include "../../lib/LoadLib/LoadLib.hpp"
-#include "../render3D/render3D.hpp"
+#include "../Engine/Engine.hpp"
 
-class core
+class Core
 {
     private:
-        Igraph *graph;
-        render3D rd;
+        Igraph *Graph;
+        Engine *engine;
 
     public:
-        core();
-        ~core();
+        Core();
+        ~Core();
 
-        void start();
+        void setGraph();
 
-        void addtOBJ(std::string id);
+        void startEngine();
+        void startGraph();
 };

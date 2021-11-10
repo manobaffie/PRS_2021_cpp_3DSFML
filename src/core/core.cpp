@@ -1,48 +1,40 @@
-#include "core.hpp"
+#include "Core.hpp"
 
-core::core()
+Core::Core()
 {
-    LoadLib<Igraph> test("../libGraph/sfml/sfml.so");
-    this->graph = test.init();
-    this->graph->setWindow(25, "", {1080, 920});
-
-    this->addtOBJ("FirstCube");
-    this->start();
+    this->setGraph();
+    this->startEngine();
+    this->startGraph();
 }
 
-void core::addtOBJ(std::string id)
+Core::~Core()
 {
-    std::vector<Line2D_s> a = this->rd.getObject2D(id);
-    for (Line2D_s i : a) {
-        this->graph->setLineShape (
-            i.id,
-            7,
-            i.Points1,
-            i.Points2
-        );
-    }
+    delete this->engine;
 }
 
-core::~core()
+void Core::setGraph()
 {
+    LoadLib<Igraph> init("../libGraph/sfml/sfml.so");
+    this->Graph = init.init();
+    this->Graph->setWindow(30, "", {1080, 920});
 }
 
-void core::start()
+void Core::startEngine()
 {
-    this->graph->startClock("FirstCubeRotation");
+    this->engine = new Engine(this->Graph);
+    this->engine->initCreatCube();
+}
 
-    while (this->graph->isOpen()) {
-        this->graph->pollEvent();
-        this->graph->clear();
+void Core::startGraph()
+{
+    while (this->Graph->isOpen()) {
+        this->Graph->pollEvent();
+        this->Graph->clear();
 
-        if (this->graph->getClock("FirstCubeRotation") > 0.01) {
-            this->rd.addRotationXAllObject(Point3D_s::Create(0, 0.1, 0, ""));
-            this->addtOBJ("FirstCube");
-            this->graph->restartClock("FirstCubeRotation");
-        }
+        this->engine->dispCreatCube();
 
+        this->Graph->drawAllShape();
 
-        this->graph->drawAllShape();
-        this->graph->display();
+        this->Graph->display();
     }
 }

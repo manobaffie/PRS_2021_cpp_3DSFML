@@ -1,6 +1,6 @@
 #include "sfml.hpp"
 
-sfml::sfml(int x, int y, std::string name) : window(sf::VideoMode(x, y), name)
+sfml::sfml(const int x, const int y, const std::string name) : window(sf::VideoMode(x, y), name)
 {
 }
 
@@ -8,11 +8,11 @@ sfml::~sfml()
 {
 }
 
-void sfml::setWindow(int fps, std::string title, std::vector<int> size)
+void sfml::setWindow(const int &fps, const std::string &title, const std::vector<int> &size)
 {
     this->window.setFramerateLimit(fps);
     this->window.setTitle(title);
-    size = size;
+    // size = size;
     // this->window.setSize((sf::Vector2u){size[0], size[1]});
 }
 
@@ -39,7 +39,7 @@ void sfml::clear()
     this->window.clear();
 }
 
-void sfml::setConvexShape(std::string id, std::vector<Point2D_s> Points)
+void sfml::setConvexShape(const std::string &id, const std::vector<Point2D_s> &Points)
 {
     sf::ConvexShape convex;
 
@@ -55,7 +55,7 @@ void sfml::setConvexShape(std::string id, std::vector<Point2D_s> Points)
     }
 }
 
-void sfml::setLineShape(std::string id, size_t BC, Point2D_s A, Point2D_s B)
+void sfml::setLineShape(const std::string &id, const size_t &BC, const Point2D_s &A, const Point2D_s &B)
 {
     double k = (BC / 2) / std::sqrt(std::pow(B.x - A.x, 2) + std::pow(B.y - A.y, 2));
 
@@ -78,7 +78,6 @@ void sfml::setLineShape(std::string id, size_t BC, Point2D_s A, Point2D_s B)
         A.x + B.x - c1.x,
         A.y + B.y - c1.y
     );
-
     this->setConvexShape(
         id,
         {
@@ -90,36 +89,47 @@ void sfml::setLineShape(std::string id, size_t BC, Point2D_s A, Point2D_s B)
     );
 }
 
-void sfml::drawShape(std::string id)
+void sfml::setAllLineShape(const std::vector<Line2D_s> &lines)
+{
+    for (const Line2D_s &line : lines) {
+        this->setLineShape (
+            line.id,
+            line.size,
+            line.Points1,
+            line.Points2
+        );
+    }
+}
+
+void sfml::drawShape(const std::string &id)
 {
     this->window.draw(this->allShape[id]);
 }
 
-void sfml::delShape(std::string id)
+void sfml::delShape(const std::string &id)
 {
     this->allShape.erase(id);
 }
 
 void sfml::drawAllShape()
 {
-
     for(std::map<std::string, sf::ConvexShape>::const_iterator it = this->allShape.begin() ; it != this->allShape.end() ; ++it) {
         this->drawShape(it->first);
     }
 }
 
-void sfml::startClock(std::string id)
+void sfml::startClock(const std::string &id)
 {
     sf::Clock c;
     this->clock[id] = c;
 }
 
-void sfml::restartClock(std::string id)
+void sfml::restartClock(const std::string &id)
 {
     this->clock[id].restart();
 }
 
-float sfml::getClock(std::string id)
+float sfml::getClock(const std::string &id)
 {
     if (this->clock.find(id) != this->clock.end()) {
         return (sf::Time(this->clock[id].getElapsedTime()).asSeconds());
