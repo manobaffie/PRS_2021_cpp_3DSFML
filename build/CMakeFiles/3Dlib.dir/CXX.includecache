@@ -14,30 +14,8 @@ iostream
 vector
 -
 
-/mnt/c/Users/mano/ubuntu/perso/PRS_2021_cpp_3DSFML/libGraph/Igraph.hpp
-vector
--
-iostream
--
-algorithm
--
-../src/object/Point.hpp
-/mnt/c/Users/mano/ubuntu/perso/PRS_2021_cpp_3DSFML/src/object/Point.hpp
-
-/mnt/c/Users/mano/ubuntu/perso/PRS_2021_cpp_3DSFML/src/Engine/Engine.cpp
-Engine.hpp
-/mnt/c/Users/mano/ubuntu/perso/PRS_2021_cpp_3DSFML/src/Engine/Engine.hpp
-
-/mnt/c/Users/mano/ubuntu/perso/PRS_2021_cpp_3DSFML/src/Engine/Engine.hpp
-../Object/Cube/Cube.hpp
-/mnt/c/Users/mano/ubuntu/perso/PRS_2021_cpp_3DSFML/src/Object/Cube/Cube.hpp
-../../libGraph/Igraph.hpp
-/mnt/c/Users/mano/ubuntu/perso/PRS_2021_cpp_3DSFML/libGraph/Igraph.hpp
-map
--
-
-/mnt/c/Users/mano/ubuntu/perso/PRS_2021_cpp_3DSFML/src/Object/Cube/Cube.hpp
-../Object.hpp
+/mnt/c/Users/mano/ubuntu/perso/PRS_2021_cpp_3DSFML/src/Object/Object.cpp
+Object.hpp
 /mnt/c/Users/mano/ubuntu/perso/PRS_2021_cpp_3DSFML/src/Object/Object.hpp
 
 /mnt/c/Users/mano/ubuntu/perso/PRS_2021_cpp_3DSFML/src/Object/Object.hpp
@@ -49,12 +27,6 @@ Point.hpp
 /mnt/c/Users/mano/ubuntu/perso/PRS_2021_cpp_3DSFML/src/Object/Point.hpp
 
 /mnt/c/Users/mano/ubuntu/perso/PRS_2021_cpp_3DSFML/src/Object/Point.hpp
-iostream
--
-../../lib/math/matrix/matrix.hpp
-/mnt/c/Users/mano/ubuntu/perso/PRS_2021_cpp_3DSFML/lib/math/matrix/matrix.hpp
-
-/mnt/c/Users/mano/ubuntu/perso/PRS_2021_cpp_3DSFML/src/object/Point.hpp
 iostream
 -
 ../../lib/math/matrix/matrix.hpp

@@ -63,8 +63,10 @@ const std::string sfml::keyToChar(const sf::Uint32 &key)
         case (sf::Keyboard::D):
             return ("D");
             break;
-        case (sf::Keyboard::Space):
-            return ("Space");
+        case (sf::Keyboard::Up):
+            return ("Up");
+        case (sf::Keyboard::Down):
+            return ("Down");
         case (sf::Keyboard::Left):
             return ("Left");
         case (sf::Keyboard::Right):

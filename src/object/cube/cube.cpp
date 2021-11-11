@@ -61,12 +61,4 @@ void Cube::setLine3D(std::string Point1, std::string Point2)
             Point1 + Point2
         )
     );
-
-    this->Shape3D.push_back (
-        Line3D_s::Create (
-            Point3D_s::Create(LineTmp.Points1.x, LineTmp.Points1.y, LineTmp.Points1.z, LineTmp.Points1.id),
-            Point3D_s::Create(LineTmp.Points2.x, LineTmp.Points2.y, LineTmp.Points2.z, LineTmp.Points2.id),
-            Point1 + Point2
-        )
-    );
 }

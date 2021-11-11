@@ -1,3 +1,6 @@
+#ifndef Object_HPP
+#define Object_HPP
+
 #include <vector>
 #include <iostream>
 
@@ -36,3 +39,5 @@ class Object
 
         void printAllObject3D();
 };
+
+#endif

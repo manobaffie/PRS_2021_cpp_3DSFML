@@ -25,7 +25,7 @@ void Core::setGraph()
 void Core::startEngine()
 {
     this->engine = new Engine(this->Graph);
-    this->engine->initCreatCube();
+    this->engine->initCreatObject();
 }
 
 void Core::startGraph()
@@ -34,7 +34,7 @@ void Core::startGraph()
         this->Graph->pollEvent();
         this->Graph->clear();
 
-        this->engine->dispCreatCube();
+        this->engine->dispCreatObject();
 
         this->Graph->drawAllShape();
 

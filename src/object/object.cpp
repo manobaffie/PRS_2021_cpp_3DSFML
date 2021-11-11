@@ -1,11 +1,8 @@
 #include "Object.hpp"
 
-// replace all push_back by hard coded size
-
 Object::Object(const std::string &id) :
 Id(id)
 {
-    this->setObject();
 }
 
 Object::~Object()
@@ -14,7 +11,9 @@ Object::~Object()
 
 void Object::setObject()
 {
+    this->Shape3D.resize(this->Oshape3D.size());
     this->Z0 = (RerolutionX / 2.0) / tan((FieldOfView / 2.0) * PI / 180.0);
+    this->Center = Point2D_s::Create(0, 0);
 }
 
 void Object::setCenter(const Point2D_s &center)
@@ -29,23 +28,23 @@ const std::string &Object::getId()
 
 const std::vector<Line2D_s> Object::getObject2D()
 {
-    std::vector<Line2D_s> output;
+    std::vector<Line2D_s> output(this->Shape3D.size());
 
     this->getPerspective();
 
-    for (const Line3D_s &i : this->Shape3D) {
-        output.push_back(Line2D_s::Create (
+    for (size_t i = 0; i < this->Shape3D.size(); i++) {
+        output[i] = Line2D_s::Create (
             Point2D_s::Create(
-                i.Points1.x + this->Center.x + RerolutionX / 2.0,
-                i.Points1.y + this->Center.y + RerolutionY / 2.0
+                this->Shape3D[i].Points1.x + this->Center.x + RerolutionX / 2.0,
+                this->Shape3D[i].Points1.y + this->Center.y + RerolutionY / 2.0
             ),
             Point2D_s::Create(
-                i.Points2.x + this->Center.x + RerolutionX / 2.0,
-                i.Points2.y + this->Center.y + RerolutionY / 2.0
+                this->Shape3D[i].Points2.x + this->Center.x + RerolutionX / 2.0,
+                this->Shape3D[i].Points2.y + this->Center.y + RerolutionY / 2.0
             ),
-            i.id,
-            6
-        ));
+            this->Shape3D[i].id,
+            3
+        );
     }
 
     return (output);
@@ -127,7 +126,7 @@ Point3D_s Object::calcRotationX(const Point3D_s &point, const Point3D_s &rota)
 void Object::printAllObject3D()
 {
     std::cout << "[" << this->Id << "]" << std::endl;
-    for (Line3D_s i : this->Shape3D) {
+    for (Line3D_s i : this->Oshape3D) {
         std::cout << i << std::endl;
     }
 }

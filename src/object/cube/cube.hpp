@@ -1,7 +1,5 @@
 #include "../Object.hpp"
 
-// pass all the variable in the object class
-
 class Cube : public Object
 {
     private:

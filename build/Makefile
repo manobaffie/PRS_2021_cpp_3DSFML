@@ -123,6 +123,33 @@ depend:
 	$(MAKE) -f CMakeFiles/3Dlib.dir/build.make CMakeFiles/3Dlib.dir/build
 .PHONY : 3Dlib/fast
 
+lib/Parsing/Parsing.o: lib/Parsing/Parsing.cpp.o
+
+.PHONY : lib/Parsing/Parsing.o
+
+# target to build an object file
+lib/Parsing/Parsing.cpp.o:
+	$(MAKE) -f CMakeFiles/3Dlib.dir/build.make CMakeFiles/3Dlib.dir/lib/Parsing/Parsing.cpp.o
+.PHONY : lib/Parsing/Parsing.cpp.o
+
+lib/Parsing/Parsing.i: lib/Parsing/Parsing.cpp.i
+
+.PHONY : lib/Parsing/Parsing.i
+
+# target to preprocess a source file
+lib/Parsing/Parsing.cpp.i:
+	$(MAKE) -f CMakeFiles/3Dlib.dir/build.make CMakeFiles/3Dlib.dir/lib/Parsing/Parsing.cpp.i
+.PHONY : lib/Parsing/Parsing.cpp.i
+
+lib/Parsing/Parsing.s: lib/Parsing/Parsing.cpp.s
+
+.PHONY : lib/Parsing/Parsing.s
+
+# target to generate assembly for a file
+lib/Parsing/Parsing.cpp.s:
+	$(MAKE) -f CMakeFiles/3Dlib.dir/build.make CMakeFiles/3Dlib.dir/lib/Parsing/Parsing.cpp.s
+.PHONY : lib/Parsing/Parsing.cpp.s
+
 src/Core/Core.o: src/Core/Core.cpp.o
 
 .PHONY : src/Core/Core.o
@@ -176,6 +203,33 @@ src/Engine/Engine.s: src/Engine/Engine.cpp.s
 src/Engine/Engine.cpp.s:
 	$(MAKE) -f CMakeFiles/3Dlib.dir/build.make CMakeFiles/3Dlib.dir/src/Engine/Engine.cpp.s
 .PHONY : src/Engine/Engine.cpp.s
+
+src/Object/Blender/Blender.o: src/Object/Blender/Blender.cpp.o
+
+.PHONY : src/Object/Blender/Blender.o
+
+# target to build an object file
+src/Object/Blender/Blender.cpp.o:
+	$(MAKE) -f CMakeFiles/3Dlib.dir/build.make CMakeFiles/3Dlib.dir/src/Object/Blender/Blender.cpp.o
+.PHONY : src/Object/Blender/Blender.cpp.o
+
+src/Object/Blender/Blender.i: src/Object/Blender/Blender.cpp.i
+
+.PHONY : src/Object/Blender/Blender.i
+
+# target to preprocess a source file
+src/Object/Blender/Blender.cpp.i:
+	$(MAKE) -f CMakeFiles/3Dlib.dir/build.make CMakeFiles/3Dlib.dir/src/Object/Blender/Blender.cpp.i
+.PHONY : src/Object/Blender/Blender.cpp.i
+
+src/Object/Blender/Blender.s: src/Object/Blender/Blender.cpp.s
+
+.PHONY : src/Object/Blender/Blender.s
+
+# target to generate assembly for a file
+src/Object/Blender/Blender.cpp.s:
+	$(MAKE) -f CMakeFiles/3Dlib.dir/build.make CMakeFiles/3Dlib.dir/src/Object/Blender/Blender.cpp.s
+.PHONY : src/Object/Blender/Blender.cpp.s
 
 src/Object/Cube/Cube.o: src/Object/Cube/Cube.cpp.o
 
@@ -267,12 +321,18 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... 3Dlib"
+	@echo "... lib/Parsing/Parsing.o"
+	@echo "... lib/Parsing/Parsing.i"
+	@echo "... lib/Parsing/Parsing.s"
 	@echo "... src/Core/Core.o"
 	@echo "... src/Core/Core.i"
 	@echo "... src/Core/Core.s"
 	@echo "... src/Engine/Engine.o"
 	@echo "... src/Engine/Engine.i"
 	@echo "... src/Engine/Engine.s"
+	@echo "... src/Object/Blender/Blender.o"
+	@echo "... src/Object/Blender/Blender.i"
+	@echo "... src/Object/Blender/Blender.s"
 	@echo "... src/Object/Cube/Cube.o"
 	@echo "... src/Object/Cube/Cube.i"
 	@echo "... src/Object/Cube/Cube.s"

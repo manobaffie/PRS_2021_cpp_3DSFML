@@ -1,4 +1,6 @@
 #include "../Object/Cube/Cube.hpp"
+#include "../Object/Blender/Blender.hpp"
+
 #include "../../libGraph/Igraph.hpp"
 
 #include <map>
@@ -9,18 +11,16 @@ class Engine
         Igraph *Graph;
 
 
-        // std::map<std::string, Object*> allObject;
+        std::vector<Object *> allObject;
 
         Object *object;
-        Object *object1;
 
     public:
         Engine(Igraph *graph);
         ~Engine();
 
-        void initCreatCube();
-        void dispCreatCube();
+        void initCreatObject();
+        void dispCreatObject();
 
         void moov(Object *object);
-        void rotation(Object *object);
 };
