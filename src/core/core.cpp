@@ -9,13 +9,16 @@ Core::Core()
 
 Core::~Core()
 {
+    delete this->Graph;
+    delete this->loadGraph;
     delete this->engine;
 }
 
 void Core::setGraph()
 {
-    LoadLib<Igraph> init("../libGraph/sfml/sfml.so");
-    this->Graph = init.init();
+    this->loadGraph = new LoadLib<Igraph>("../libGraph/sfml/sfml.so");
+
+    this->Graph = this->loadGraph->init();
     this->Graph->setWindow(30, "", {1080, 920});
 }
 

@@ -10,7 +10,7 @@ class Cube : public Object
         size_t Size;
 
     public:
-        Cube(const std::string &id, const Point3D_s &origine, const size_t &size);
+        Cube(const std::string &id, const size_t &size);
         ~Cube();
 
         void setPoint3D();

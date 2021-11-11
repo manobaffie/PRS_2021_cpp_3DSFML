@@ -6,6 +6,7 @@ sfml::sfml(const int x, const int y, const std::string name) : window(sf::VideoM
 
 sfml::~sfml()
 {
+    this->window.close();
 }
 
 void sfml::setWindow(const int &fps, const std::string &title, const std::vector<int> &size)
@@ -19,9 +20,64 @@ void sfml::setWindow(const int &fps, const std::string &title, const std::vector
 void sfml::pollEvent()
 {
     while (this->window.pollEvent(this->event)) {
-        if (this->event.type == sf::Event::Closed)
-            this->window.close();
+        switch (this->event.type) {
+            case sf::Event::Closed:
+                this->window.close();
+                break;
+            case sf::Event::KeyPressed:
+                this->keyGest(true, this->keyToChar(this->event.text.unicode));
+                break;
+            case sf::Event::KeyReleased:
+                this->keyGest(false, this->keyToChar(this->event.text.unicode));
+                break;
+            default:
+                break;
+        }
     }
+}
+
+void sfml::keyGest(const bool &isPressed, const std::string &key)
+{
+    if (key == "Error")
+        return;
+
+    if (!isPressed) {
+        this->isPressedKey.erase(std::find(this->isPressedKey.begin(), this->isPressedKey.end(), key));
+    } else if (std::count(this->isPressedKey.cbegin(), this->isPressedKey.cend(), key) == 0) {
+        this->isPressedKey.push_back(key);
+    }
+}
+
+const std::string sfml::keyToChar(const sf::Uint32 &key)
+{
+    switch (key) {
+        case (sf::Keyboard::Z):
+            return ("Z");
+            break;
+        case (sf::Keyboard::Q):
+            return ("Q");
+            break;
+        case (sf::Keyboard::S):
+            return ("S");
+            break;
+        case (sf::Keyboard::D):
+            return ("D");
+            break;
+        case (sf::Keyboard::Space):
+            return ("Space");
+        case (sf::Keyboard::Left):
+            return ("Left");
+        case (sf::Keyboard::Right):
+            return ("Right");
+        default:
+            break;
+    }
+    return ("error");
+}
+
+const std::vector<std::string> &sfml::getKey()
+{
+    return (this->isPressedKey);
 }
 
 void sfml::display()

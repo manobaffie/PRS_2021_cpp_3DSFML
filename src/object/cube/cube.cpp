@@ -1,7 +1,7 @@
 #include "Cube.hpp"
 
-Cube::Cube(const std::string &id, const Point3D_s &origine, const size_t &size) :
-Object(id, origine), Size(size)
+Cube::Cube(const std::string &id, const size_t &size) :
+Object(id), Size(size)
 {
     this->setPoint3D();
 
@@ -25,6 +25,7 @@ Object(id, origine), Size(size)
 
 Cube::~Cube()
 {
+    
 }
 
 void Cube::setPoint3D()
@@ -44,7 +45,7 @@ void Cube::setLine3D(std::string Point1, std::string Point2)
 {
     Line3D_s LineTmp;
 
-    for (Point3D_s i : this->cubePoint) {
+    for (const Point3D_s &i : this->cubePoint) {
         if (i.id == Point1) {
             LineTmp.Points1 = Point3D_s::Create(i.x, i.y, i.z, i.id);
         }
@@ -52,6 +53,14 @@ void Cube::setLine3D(std::string Point1, std::string Point2)
             LineTmp.Points2 = Point3D_s::Create(i.x, i.y, i.z, i.id);
         }
     }
+
+    this->Oshape3D.push_back (
+        Line3D_s::Create (
+            Point3D_s::Create(LineTmp.Points1.x, LineTmp.Points1.y, LineTmp.Points1.z, LineTmp.Points1.id),
+            Point3D_s::Create(LineTmp.Points2.x, LineTmp.Points2.y, LineTmp.Points2.z, LineTmp.Points2.id),
+            Point1 + Point2
+        )
+    );
 
     this->Shape3D.push_back (
         Line3D_s::Create (

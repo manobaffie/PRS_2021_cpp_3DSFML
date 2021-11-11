@@ -20,6 +20,7 @@ class LoadLib
                 std::cerr << "[ERROR " << this->path << "] : Cannot load library" << "\n[ERROR Lib] : ->" << dlerror() <<  std::endl;
             dlerror();
         };
+
         ~LoadLib() {
             dlclose(this->handle);
         };

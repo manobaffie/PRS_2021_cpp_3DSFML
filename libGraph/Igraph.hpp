@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <iostream>
+#include <algorithm>
 
 #include "../src/object/Point.hpp"
 
@@ -16,6 +17,8 @@ class Igraph
         virtual void setWindow(const int &fps, const std::string &title, const std::vector<int> &size) = 0;
 
         virtual void pollEvent() = 0;
+
+        virtual const std::vector<std::string> &getKey() = 0;
 
         virtual void display() = 0;
         virtual bool isOpen() = 0;

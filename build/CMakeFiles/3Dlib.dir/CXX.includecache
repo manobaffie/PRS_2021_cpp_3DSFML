@@ -19,6 +19,8 @@ vector
 -
 iostream
 -
+algorithm
+-
 ../src/object/Point.hpp
 /mnt/c/Users/mano/ubuntu/perso/PRS_2021_cpp_3DSFML/src/object/Point.hpp
 

@@ -10,6 +10,7 @@ class sfml : public Igraph
         sf::Event event;
         std::map<std::string, sf::ConvexShape> allShape;
         std::map<std::string, sf::Clock> clock;
+        std::vector<std::string> isPressedKey;
 
     public:
         sfml(const int x, const int y, const std::string name);
@@ -19,6 +20,10 @@ class sfml : public Igraph
         void setWindow(const int &fps, const std::string &title, const std::vector<int> &size);
 
         void pollEvent();
+
+        void keyGest(const bool &isPressed, const std::string &key); /*not virtual*/
+        const std::string keyToChar(const sf::Uint32 &key); /*not virtual*/
+        const std::vector<std::string> &getKey();
 
         void display();
         bool isOpen();

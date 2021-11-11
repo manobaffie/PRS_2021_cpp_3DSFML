@@ -9,7 +9,7 @@ class Engine
         Igraph *Graph;
 
 
-        std::map<std::string, Object*> allObject;
+        // std::map<std::string, Object*> allObject;
 
         Object *object;
         Object *object1;
@@ -20,4 +20,7 @@ class Engine
 
         void initCreatCube();
         void dispCreatCube();
+
+        void moov(Object *object);
+        void rotation(Object *object);
 };

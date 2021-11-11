@@ -6,6 +6,7 @@ class Core
     private:
         Igraph *Graph;
         Engine *engine;
+        LoadLib<Igraph> *loadGraph;
 
     public:
         Core();
