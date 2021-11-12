@@ -19,8 +19,8 @@ set(a.out_src
         ${src_dir}/Engine/Engine.cpp
 
         ${src_dir}/Object/Object.cpp
-        ${src_dir}/Object/Blender/Blender.cpp
-        ${src_dir}/Object/Cube/Cube.cpp)
+        ${src_dir}/Object/Blender/Blender.cpp)
+        # ${src_dir}/Object/Cube/Cube.cpp)
 
 include_directories(${include_dir})
 add_executable(${a.out_bin} ${a.out_src})

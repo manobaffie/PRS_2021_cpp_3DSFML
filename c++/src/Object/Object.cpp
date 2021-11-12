@@ -11,7 +11,6 @@ Object::~Object()
 
 void Object::setObject()
 {
-    this->Shape3D.resize(this->Oshape3D.size());
     this->Z0 = (RerolutionX / 2.0) / tan((FieldOfView / 2.0) * PI / 180.0);
     this->Center = Point2D_s::Create(0, 0);
 }
@@ -26,61 +25,36 @@ const std::string &Object::getId()
     return (this->Id);
 }
 
-const std::vector<Line2D_s> Object::getObject2D()
+const std::vector<Shape2D_s> Object::getObject2D()
 {
-    std::vector<Line2D_s> output(this->Shape3D.size());
+    std::vector<Shape2D_s> Object2D(this->Oshape3D.size());
 
-    this->getPerspective();
-
-    for (size_t i = 0; i < this->Shape3D.size(); i++) {
-        output[i] = Line2D_s::Create (
-            Point2D_s::Create(
-                this->Shape3D[i].Points1.x + this->Center.x + RerolutionX / 2.0,
-                this->Shape3D[i].Points1.y + this->Center.y + RerolutionY / 2.0
-            ),
-            Point2D_s::Create(
-                this->Shape3D[i].Points2.x + this->Center.x + RerolutionX / 2.0,
-                this->Shape3D[i].Points2.y + this->Center.y + RerolutionY / 2.0
-            ),
-            this->Shape3D[i].id,
-            3
-        );
-    }
-
-    return (output);
-}
-
-void Object::getPerspective()
-{
     for (size_t i = 0; i < this->Oshape3D.size(); i++) {
-        this->Shape3D[i] = Line3D_s::Create (
-            Point3D_s::Create (
-                this->Oshape3D[i].Points1.x * this->Z0 / (this->Z0 + this->Oshape3D[i].Points1.z),
-                this->Oshape3D[i].Points1.y * this->Z0 / (this->Z0 + this->Oshape3D[i].Points1.z),
-                this->Oshape3D[i].Points1.z,
-                this->Oshape3D[i].Points1.id
-            ),
-            Point3D_s::Create (
-                this->Oshape3D[i].Points2.x * this->Z0 / (this->Z0 + this->Oshape3D[i].Points2.z),
-                this->Oshape3D[i].Points2.y * this->Z0 / (this->Z0 + this->Oshape3D[i].Points2.z),
-                this->Oshape3D[i].Points2.z,
-                this->Oshape3D[i].Points2.id
-            ),
-            this->Id + this->Oshape3D[i].id
-        );
+        std::vector<Point2D_s> Shape2D(this->Oshape3D[i].Shape3D.size());
+        for (size_t j = 0; j < this->Oshape3D[i].Shape3D.size(); j++) {
+            Shape2D[j] = Point2D_s::Create(
+                this->Oshape3D[i].Shape3D[j].x * this->Z0 / (this->Z0 + this->Oshape3D[i].Shape3D[j].z) + this->Center.x + RerolutionX / 2.0,
+                this->Oshape3D[i].Shape3D[j].y * this->Z0 / (this->Z0 + this->Oshape3D[i].Shape3D[j].z) + this->Center.y + RerolutionY / 2.0
+            );
+        }
+        Object2D[i].Shape2D = Shape2D;
+        Object2D[i].id = this->Oshape3D[i].id;
     }
+    return (Object2D);
 }
 
 void Object::addOrigine(const Point3D_s &origine)
 {
     for (size_t i = 0; i < this->Oshape3D.size(); i++) {
-        this->Oshape3D[i].Points1.x += origine.x;
-        this->Oshape3D[i].Points1.y += origine.y;
-        this->Oshape3D[i].Points1.z += origine.z;
+        for (size_t j = 0; j < this->Oshape3D[i].Shape3D.size(); j++) {
+            this->Oshape3D[i].Shape3D[j].x += origine.x;
+            this->Oshape3D[i].Shape3D[j].y += origine.y;
+            this->Oshape3D[i].Shape3D[j].z += origine.z;
 
-        this->Oshape3D[i].Points2.x += origine.x;
-        this->Oshape3D[i].Points2.y += origine.y;
-        this->Oshape3D[i].Points2.z += origine.z;
+            this->Oshape3D[i].Shape3D[j].x += origine.x;
+            this->Oshape3D[i].Shape3D[j].y += origine.y;
+            this->Oshape3D[i].Shape3D[j].z += origine.z;
+        }
     }
 }
 
@@ -89,8 +63,10 @@ void Object::addRotationX(const double &speed)
     Point3D_s rota = Point3D_s::Create(0.0, speed, 0.0);
 
     for (size_t i = 0; i < this->Oshape3D.size(); i++) {
-        this->Oshape3D[i].Points1 = calcRotationX(this->Oshape3D[i].Points1, rota);
-        this->Oshape3D[i].Points2 = calcRotationX(this->Oshape3D[i].Points2, rota);
+        for (size_t j = 0; j < this->Oshape3D[i].Shape3D.size(); j++) {
+            this->Oshape3D[i].Shape3D[j] = calcRotationX(this->Oshape3D[i].Shape3D[j], rota);
+            this->Oshape3D[i].Shape3D[j] = calcRotationX(this->Oshape3D[i].Shape3D[j], rota);
+        }
     }
 }
 
@@ -126,7 +102,11 @@ Point3D_s Object::calcRotationX(const Point3D_s &point, const Point3D_s &rota)
 void Object::printAllObject3D()
 {
     std::cout << "[" << this->Id << "]" << std::endl;
-    for (Line3D_s i : this->Oshape3D) {
-        std::cout << i << std::endl;
+    for (const Shape3D_s &i : this->Oshape3D) {
+        std::cout << "[" << i.id << "] ";
+        for (const Point3D_s &j : i.Shape3D) {
+            std::cout << j << " ";
+        }
+        std::cout << std::endl;
     }
 }

@@ -106,4 +106,52 @@ struct Line3D_s
     }
 };
 
+struct Shape3D_s
+{
+    static Shape3D_s Create(std::vector<Point3D_s> shape3D, std::string id = "")
+    {
+        Shape3D_s output;
+        output.Shape3D = shape3D;
+        output.id = id;
+        return (output);
+    }
+
+    std::vector<Point3D_s> Shape3D;
+    std::string id;
+
+    friend std::ostream& operator<<(std::ostream& os, const Shape3D_s &s)
+    {
+        os << "[" << s.id << "]" << std::endl;
+        for (Point3D_s j : s.Shape3D) {
+            os << j << " ";
+        }
+        os << std::endl;
+        return (os);
+    }
+};
+
+struct Shape2D_s
+{
+    static Shape2D_s Create(std::vector<Point2D_s> shape2D, std::string id = "")
+    {
+        Shape2D_s output;
+        output.Shape2D = shape2D;
+        output.id = id;
+        return (output);
+    }
+
+    std::vector<Point2D_s> Shape2D;
+    std::string id;
+
+    friend std::ostream& operator<<(std::ostream& os, const Shape2D_s &s)
+    {
+        os << "[" << s.id << "]" << std::endl;
+        for (Point2D_s j : s.Shape2D) {
+            os << j << " ";
+        }
+        os << std::endl;
+        return (os);
+    }
+};
+
 #endif

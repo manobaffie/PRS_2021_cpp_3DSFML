@@ -11,7 +11,10 @@ Engine::~Engine()
 
 void Engine::initCreatObject()
 {
-    this->object = new Blender("FirstBlender", "../BlenderFile/Lowpoly_tree_sample.obj");
+    // this->object = new Blender("FirstBlender", "../BlenderFile/Lowpoly_tree_sample.obj");
+    this->object = new Blender("FirstBlender", "../BlenderFile/Anime_charcter.obj");
+    // this->object = new Blender("FirstBlender", "../BlenderFile/poison.OBJ");
+    this->object->addOrigine(Point3D_s::Create(0, 0, 500));
 
     // this->object->printAllObject3D();
 }
@@ -19,7 +22,10 @@ void Engine::initCreatObject()
 void Engine::dispCreatObject()
 {
     this->moov(this->object);
-    this->Graph->setAllLineShape(this->object->getObject2D());
+    for (const Shape2D_s &i : this->object->getObject2D()) {
+        // std::cout << i.id << std::endl;
+        this->Graph->setConvexShape(i.id, i.Shape2D);
+    }
 }
 
 void Engine::moov(Object *object)

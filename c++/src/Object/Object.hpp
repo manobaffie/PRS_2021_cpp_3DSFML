@@ -19,8 +19,7 @@ class Object
         Point2D_s Center;
 
     protected:
-        std::vector<Line3D_s> Shape3D;
-        std::vector<Line3D_s> Oshape3D;
+        std::vector<Shape3D_s> Oshape3D;
 
     public:
         Object(const std::string &id);
@@ -29,8 +28,7 @@ class Object
         void setObject();
         void setCenter(const Point2D_s &center);
 
-        void getPerspective();
-        const std::vector<Line2D_s> getObject2D();
+        const std::vector<Shape2D_s> getObject2D();
         const std::string &getId();
 
         void addOrigine(const Point3D_s &origine);
