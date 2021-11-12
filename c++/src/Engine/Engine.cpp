@@ -11,10 +11,10 @@ Engine::~Engine()
 
 void Engine::initCreatObject()
 {
-    // this->object = new Blender("FirstBlender", "../BlenderFile/Lowpoly_tree_sample.obj");
-    this->object = new Blender("FirstBlender", "../BlenderFile/Anime_charcter.obj");
+    this->object = new Blender("FirstBlender", "../BlenderFile/Lowpoly_tree_sample.obj");
+    // this->object = new Blender("FirstBlender", "../BlenderFile/Anime_charcter.obj");
     // this->object = new Blender("FirstBlender", "../BlenderFile/poison.OBJ");
-    this->object->addOrigine(Point3D_s::Create(0, 0, 500));
+    this->object->addOrigine(Point3D_s::Create(0, 0, 100));
 
     // this->object->printAllObject3D();
 }

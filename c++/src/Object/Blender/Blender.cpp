@@ -3,6 +3,8 @@
 Blender::Blender(const std::string &id, const std::string &path) :
 Object(id), Path(path)
 {
+    this->scale = 100.0;
+
     this->parsing();
     this->LinkPoints();
 
@@ -31,9 +33,9 @@ void Blender::parsing()
         if (splitLine[0] == "v") {
             this->Points3D.push_back (
                 Point3D_s::Create (
-                    std::atof(splitLine[3].c_str()) * 100,
-                    std::atof(splitLine[2].c_str()) * -100,
-                    std::atof(splitLine[1].c_str()) * 100
+                    std::atof(splitLine[3].c_str()) * this->scale,
+                    std::atof(splitLine[2].c_str()) * -this->scale,
+                    std::atof(splitLine[1].c_str()) * this->scale
                 )
             );
         }

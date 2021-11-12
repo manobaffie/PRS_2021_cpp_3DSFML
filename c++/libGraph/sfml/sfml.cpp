@@ -102,7 +102,8 @@ void sfml::setConvexShape(const std::string &id, const std::vector<Point2D_s> &P
     sf::ConvexShape convex;
 
     convex.setOutlineColor(sf::Color::Black);
-    convex.setFillColor(sf::Color(255, 0, 0, 20));
+    convex.setOutlineThickness(1);
+    convex.setFillColor(sf::Color(255, 255, 255, 30));
 
     convex.setPointCount(Points.size());
     for (size_t i = 0; i < Points.size(); i++) {

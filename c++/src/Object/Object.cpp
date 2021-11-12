@@ -13,6 +13,7 @@ void Object::setObject()
 {
     this->Z0 = (RerolutionX / 2.0) / tan((FieldOfView / 2.0) * PI / 180.0);
     this->Center = Point2D_s::Create(0, 0);
+
 }
 
 void Object::setCenter(const Point2D_s &center)

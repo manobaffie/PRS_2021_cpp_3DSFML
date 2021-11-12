@@ -20,6 +20,7 @@ class Object
 
     protected:
         std::vector<Shape3D_s> Oshape3D;
+        double scale;
 
     public:
         Object(const std::string &id);
