@@ -1,15 +1,15 @@
 cmake_minimum_required(VERSION 3.0)
 
-project(3Dlib)
+project(a.out)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-set(3Dlib_bin 3Dlib)
-set(src_dir src)
+set(a.out_bin a.out)
+set(src_dir ./../c++/src)
 set(include_dir include)
 
-set(3Dlib_src
+set(a.out_src
         ${src_dir}/main.cpp
 
         ${src_dir}/../lib/Parsing/Parsing.cpp
@@ -23,7 +23,7 @@ set(3Dlib_src
         ${src_dir}/Object/Cube/Cube.cpp)
 
 include_directories(${include_dir})
-add_executable(${3Dlib_bin} ${3Dlib_src})
+add_executable(${a.out_bin} ${a.out_src})
 add_compile_options(-Wall -Wextra -Werror -g3)
 
-target_link_libraries(${3Dlib_bin} -fPIC -ldl)
+target_link_libraries(${a.out_bin} -fPIC -ldl)

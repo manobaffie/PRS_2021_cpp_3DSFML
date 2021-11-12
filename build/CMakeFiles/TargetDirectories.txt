@@ -1,3 +1,0 @@
-/mnt/c/Users/mano/ubuntu/perso/PRS_2021_cpp_3DSFML/build/CMakeFiles/rebuild_cache.dir
-/mnt/c/Users/mano/ubuntu/perso/PRS_2021_cpp_3DSFML/build/CMakeFiles/edit_cache.dir
-/mnt/c/Users/mano/ubuntu/perso/PRS_2021_cpp_3DSFML/build/CMakeFiles/3Dlib.dir

@@ -11,9 +11,7 @@ Engine::~Engine()
 
 void Engine::initCreatObject()
 {
-    this->object = new Blender("FirstBlender", "../BlenderFile/Anime_charcter.obj");
-    // this->object = new Blender("FirstBlender", "../BlenderFile/CubeBlender.obj");
-    // this->object = new Cube("FirstCube", 100);
+    this->object = new Blender("FirstBlender", "../BlenderFile/Lowpoly_tree_sample.obj");
 
     // this->object->printAllObject3D();
 }
