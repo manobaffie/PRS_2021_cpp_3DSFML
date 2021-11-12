@@ -30,6 +30,8 @@ class Object
         void setCenter(const Point2D_s &center);
 
         const std::vector<Shape2D_s> getObject2D();
+        const std::vector<Point2D_s> calcObject2D(const size_t &i);
+
         const std::string &getId();
 
         void addOrigine(const Point3D_s &origine);
