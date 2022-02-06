@@ -5,8 +5,9 @@ class Blender : public Object
 {
     private:
         std::string Path;
-        std::vector<Point3D_s> Points3D;
-        std::vector<std::vector<size_t>> Links;
+        std::vector<Point<float>> Points3D;
+        std::vector<Point<float>> Texture;
+        std::vector<std::vector<std::vector<size_t>>> Links;
 
     public:
         Blender(const std::string &id, const std::string &Path);

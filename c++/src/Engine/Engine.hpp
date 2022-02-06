@@ -1,7 +1,4 @@
-#include "../Object/Cube/Cube.hpp"
 #include "../Object/Blender/Blender.hpp"
-
-#include "../../libGraph/Igraph.hpp"
 
 #include <map>
 

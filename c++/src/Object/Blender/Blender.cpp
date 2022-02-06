@@ -32,19 +32,30 @@ void Blender::parsing()
         const std::vector<std::string> splitLine = Parsing::SplitString(line, " ");
         if (splitLine[0] == "v") {
             this->Points3D.push_back (
-                Point3D_s::Create (
+                Point<float> (
                     std::atof(splitLine[3].c_str()) * this->scale,
                     std::atof(splitLine[2].c_str()) * -this->scale,
                     std::atof(splitLine[1].c_str()) * this->scale
                 )
             );
         }
+        if (splitLine[0] == "vt") {
+            this->Texture.push_back(
+                Point<float> (
+                    std::atof(splitLine[1].c_str()),
+                    std::atof(splitLine[2].c_str())                    
+                )
+            );
+        }
         if (splitLine[0] == "f") {
-            std::vector<size_t> tmp;
+            std::vector<std::vector<size_t>> tmp0;
             for (size_t i = 1; i < splitLine.size(); i++) {
-                tmp.push_back(std::atoi(Parsing::SplitString(splitLine[i], "/")[0].c_str()));
+                std::vector<size_t> tmp1;
+                tmp1.push_back(std::atoi(Parsing::SplitString(splitLine[i], "/")[0].c_str()));
+                tmp1.push_back(std::atoi(Parsing::SplitString(splitLine[i], "/")[1].c_str()));
+                tmp0.push_back(tmp1);
             }
-            this->Links.push_back(tmp);
+            this->Links.push_back(tmp0);
         }
     }
     infile.close();
@@ -52,17 +63,16 @@ void Blender::parsing()
 
 void Blender::LinkPoints()
 {
-    size_t j = 0;
+    for (const std::vector<std::vector<size_t>> &link : this->Links) {
 
-    for (const std::vector<size_t> &link : this->Links) {
-
-        Shape3D_s Shape3D = Shape3D_s::Create(std::vector<Point3D_s>(link.size()));
+        std::vector<Point<float>> Shape3D = std::vector<Point<float>>(std::vector<Point<float>>(link.size()));
+        std::vector<Point<float>> TexturesT = std::vector<Point<float>>(std::vector<Point<float>>(link.size()));
 
         for (size_t i = 0; i < link.size(); i++) {
-            Shape3D.Shape3D[i] = this->Points3D[link[i] - 1];
-            Shape3D.id = this->getId() + std::to_string(j);
+            Shape3D[i] = this->Points3D[link[i][0] - 1];
+            TexturesT[i] = this->Texture[link[i][1] - 1];
         }
         this->Oshape3D.push_back(Shape3D);
-        j++;
+        this->Textures.push_back(TexturesT);
     }    
 }

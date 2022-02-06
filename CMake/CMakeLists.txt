@@ -26,4 +26,4 @@ include_directories(${include_dir})
 add_executable(${a.out_bin} ${a.out_src})
 add_compile_options(-Wall -Wextra -Werror -g3)
 
-target_link_libraries(${a.out_bin} -fPIC -ldl)
+target_link_libraries(${a.out_bin} -fPIC -ldl -pthread)

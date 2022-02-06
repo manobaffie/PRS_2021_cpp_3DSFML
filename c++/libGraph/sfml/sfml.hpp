@@ -3,6 +3,22 @@
 
 #include "../Igraph.hpp"
 
+class Entity : public sf::Drawable, public sf::Transformable
+{
+    private:
+        virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+
+        std::vector<sf::VertexArray> Vertices;
+        sf::Texture Texture;
+
+    public:
+        Entity() = default;
+        ~Entity();
+
+        bool load(const std::vector<std::vector<coord_s>> &mapCoords, const std::string &pathTexture, const std::vector<std::vector<coord_s>> &textureCoords);
+        void setPosition(const std::vector<std::vector<coord_s>> &mapCoords);
+};
+
 class sfml : public Igraph
 {
     private:
@@ -11,6 +27,8 @@ class sfml : public Igraph
         std::map<std::string, sf::ConvexShape> allShape;
         std::map<std::string, sf::Clock> clock;
         std::vector<std::string> isPressedKey;
+
+        std::map<std::string, Entity> Entities;
 
     public:
         sfml(const int x, const int y, const std::string name);
@@ -23,23 +41,17 @@ class sfml : public Igraph
 
         void keyGest(const bool &isPressed, const std::string &key); /*not virtual*/
         const std::string keyToChar(const sf::Uint32 &key); /*not virtual*/
-        const std::vector<std::string> &getKey();
+        const std::vector<std::string> getKey();
 
         void display();
         bool isOpen();
         void clear();
 
-        void setConvexShape(const std::string &id, const std::vector<Point2D_s> &Points);
-        void setLineShape(const std::string &id, const size_t &size, const Point2D_s &Points1, const Point2D_s &Points2);
-        void setAllLineShape(const std::vector<Line2D_s> &Lines);
-
-        void drawShape(const std::string &id);
-        void delShape(const std::string &id);
-
-        void drawAllShape();
-
         void startClock(const std::string &id);
         void restartClock(const std::string &id);
         float getClock(const std::string &id);
-};
 
+        void addEntity(const std::string &id, const std::vector<std::vector<coord_s>> &mapCoords, const std::string &pathTexture = "", const std::vector<std::vector<coord_s>> &textureCoords = {});
+        void setCoordEntity(const std::string &id, const std::vector<std::vector<coord_s>> &mapCoords);
+        void drawEntity(const std::string &id);
+};

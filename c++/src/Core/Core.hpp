@@ -1,6 +1,8 @@
 #include "../../lib/LoadLib/LoadLib.hpp"
 #include "../Engine/Engine.hpp"
 
+#include <thread>
+
 class Core
 {
     private:

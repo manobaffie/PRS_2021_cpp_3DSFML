@@ -5,7 +5,12 @@
 #include <iostream>
 #include <algorithm>
 
-#include "../src/object/Point.hpp"
+struct coord_s
+{
+    float x;
+    float y;
+    float z;
+};
 
 class Igraph
 {
@@ -18,24 +23,19 @@ class Igraph
 
         virtual void pollEvent() = 0;
 
-        virtual const std::vector<std::string> &getKey() = 0;
+        virtual const std::vector<std::string> getKey() = 0;
 
         virtual void display() = 0;
         virtual bool isOpen() = 0;
         virtual void clear() = 0;
 
-        virtual void setConvexShape(const std::string &id, const std::vector<Point2D_s> &Points) = 0;
-        virtual void setLineShape(const std::string &id, const size_t &size, const Point2D_s &Points1, const Point2D_s &Points2) = 0;
-        virtual void setAllLineShape(const std::vector<Line2D_s> &Lines) = 0;
-
-        virtual void drawShape(const std::string &id) = 0;
-        virtual void delShape(const std::string &id) = 0;
-
-        virtual void drawAllShape() = 0;
-
         virtual void startClock(const std::string &id) = 0;
         virtual void restartClock(const std::string &id) = 0;
         virtual float getClock(const std::string &id) = 0;
+
+        virtual void addEntity(const std::string &id, const std::vector<std::vector<coord_s>> &mapCoords, const std::string &pathTexture = "", const std::vector<std::vector<coord_s>> &textureCoords = {}) = 0;
+        virtual void setCoordEntity(const std::string &id, const std::vector<std::vector<coord_s>> &mapCoords) = 0;
+        virtual void drawEntity(const std::string &id) = 0;
 };
 
 #endif

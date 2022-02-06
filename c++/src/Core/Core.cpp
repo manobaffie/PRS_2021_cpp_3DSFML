@@ -19,9 +19,7 @@ void Core::setGraph()
     this->loadGraph = new LoadLib<Igraph>("../c++/libGraph/sfml/sfml.so");
 
     this->Graph = this->loadGraph->init();
-    this->Graph->setWindow(25, "", {1080, 920});
-
-    this->Graph->startClock("a");
+    this->Graph->setWindow(30, "", {1080, 920});
 }
 
 void Core::startEngine()
@@ -38,7 +36,7 @@ void Core::startGraph()
 
         this->engine->dispCreatObject();
 
-        this->Graph->drawAllShape();
+        this->Graph->drawEntity("test");
 
         this->Graph->display();
     }

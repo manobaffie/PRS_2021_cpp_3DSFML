@@ -4,7 +4,10 @@
 #include <vector>
 #include <iostream>
 
+#include "../../libGraph/Igraph.hpp"
 #include "Point.hpp"
+#include <iostream>
+
 
 #define RerolutionX 1080
 #define RerolutionY 920
@@ -16,10 +19,11 @@ class Object
     private:
         std::string Id;
         double Z0;
-        Point2D_s Center;
+        Point<float> Center;
 
     protected:
-        std::vector<Shape3D_s> Oshape3D;
+        std::vector<std::vector<Point<float>>> Oshape3D;
+        std::vector<std::vector<Point<float>>> Textures;
         double scale;
 
     public:
@@ -27,16 +31,18 @@ class Object
         ~Object();
 
         void setObject();
-        void setCenter(const Point2D_s &center);
+        void setCenter(const Point<float> &center);
 
-        const std::vector<Shape2D_s> getObject2D();
-        const std::vector<Point2D_s> calcObject2D(const size_t &i);
+        const std::vector<std::vector<coord_s>> getTextures();
+
+        const std::vector<std::vector<coord_s>> getObject2D();
+        const std::vector<coord_s> calcObject2D(const size_t &i);
 
         const std::string &getId();
 
-        void addOrigine(const Point3D_s &origine);
+        void addOrigine(const Point<float> &origine);
         void addRotationX(const double &speed);
-        Point3D_s calcRotationX(const Point3D_s &point, const Point3D_s &rota);
+        Point<float> calcRotationX(const Point<float> &point, const Point<float> &rota);
 
         void printAllObject3D();
 };
