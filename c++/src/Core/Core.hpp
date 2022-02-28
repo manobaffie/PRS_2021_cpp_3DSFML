@@ -1,21 +1,15 @@
-#include "../../lib/LoadLib/LoadLib.hpp"
-#include "../Engine/Engine.hpp"
+#include <iostream>
 
-#include <thread>
+#include "../../lib/lib3D/Engine/EngineBase/Engine.hpp"
 
 class Core
 {
     private:
-        Igraph *Graph;
-        Engine *engine;
-        LoadLib<Igraph> *loadGraph;
+        Graph *window;
 
     public:
         Core();
         ~Core();
 
-        void setGraph();
-
-        void startEngine();
-        void startGraph();
+        void main();
 };

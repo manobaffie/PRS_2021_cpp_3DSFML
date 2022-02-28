@@ -6,24 +6,24 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 set(a.out_bin a.out)
+
 set(src_dir ./../c++/src)
-set(include_dir include)
+set(lib_dir ./../c++/lib)
 
-set(a.out_src
+set(
+        a.out_src
+
         ${src_dir}/main.cpp
-
-        ${src_dir}/../lib/Parsing/Parsing.cpp
-
         ${src_dir}/Core/Core.cpp
 
-        ${src_dir}/Engine/Engine.cpp
+        ${lib_dir}/libGraph/sfml/sfml.cpp
+        ${lib_dir}/lib3D/Object/Blender/Blender.cpp
+        ${lib_dir}/lib3D/Engine/EngineBase/Engine.cpp
 
-        ${src_dir}/Object/Object.cpp
-        ${src_dir}/Object/Blender/Blender.cpp)
-        # ${src_dir}/Object/Cube/Cube.cpp)
+        ${lib_dir}/Parsing/Parsing.cpp
+)
 
-include_directories(${include_dir})
 add_executable(${a.out_bin} ${a.out_src})
 add_compile_options(-Wall -Wextra -Werror -g3)
 
-target_link_libraries(${a.out_bin} -fPIC -ldl -pthread)
+target_link_libraries(${a.out_bin} -fPIC -ldl -pthread -lsfml-graphics -lsfml-window -lsfml-system)

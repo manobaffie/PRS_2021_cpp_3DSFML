@@ -1,43 +1,27 @@
 #include "Core.hpp"
 
-Core::Core()
+Core::Core() :
+window(new sfmlWindow({1080, 720}, "a.out"))
 {
-    this->setGraph();
-    this->startEngine();
-    this->startGraph();
 }
 
 Core::~Core()
 {
-    delete this->Graph;
-    delete this->loadGraph;
-    delete this->engine;
+    delete window;
 }
 
-void Core::setGraph()
+void Core::main()
 {
-    this->loadGraph = new LoadLib<Igraph>("../c++/libGraph/sfml/sfml.so");
+    Graph3D *engine = new Engine(this->window);
 
-    this->Graph = this->loadGraph->init();
-    this->Graph->setWindow(30, "", {1080, 920});
-}
+    while (window->isOpen()) {
 
-void Core::startEngine()
-{
-    this->engine = new Engine(this->Graph);
-    this->engine->initCreatObject();
-}
+        window->pollEvent();
+        window->clear();
 
-void Core::startGraph()
-{
-    while (this->Graph->isOpen()) {
-        this->Graph->pollEvent();
-        this->Graph->clear();
+        engine->draw();
 
-        this->engine->dispCreatObject();
+        window->display();
 
-        this->Graph->drawEntity("test");
-
-        this->Graph->display();
     }
 }
