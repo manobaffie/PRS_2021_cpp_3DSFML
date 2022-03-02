@@ -1,7 +1,7 @@
 #include "Core.hpp"
 
 Core::Core() :
-window(new sfmlWindow({1080, 720}, "a.out"))
+window(new sfmlWindow(30, {1080, 720}, "a.out"))
 {
 }
 
@@ -12,7 +12,7 @@ Core::~Core()
 
 void Core::main()
 {
-    Graph3D *engine = new Engine(this->window);
+    IEngine *engine = new Engine(this->window);
 
     while (window->isOpen()) {
 

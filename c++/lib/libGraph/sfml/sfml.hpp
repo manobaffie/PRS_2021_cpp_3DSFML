@@ -7,16 +7,16 @@
 class sfmlEntity : public Entity, public sf::Drawable, public sf::Transformable
 {
     private:
-        sf::VertexArray vertices;
+        std::vector<sf::VertexArray> vertices;
         sf::Texture texture;
 
         virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+        virtual void linkVertices(std::vector<vec::vpvector2f> &vertices);
 
     public:
-        sfmlEntity(const vec::vvector2f &vvertices, const vec::vector4i &color);
+        sfmlEntity(std::vector<vec::vpvector2f> &vvertices, const vec::vector4i &color);
         ~sfmlEntity();
 
-        virtual void loadVertices(vec::vpvector2f &vertices) override;
 };
 
 class sfmlWindow : public Graph
@@ -26,15 +26,15 @@ class sfmlWindow : public Graph
         sf::Event event;
 
     public:
-        sfmlWindow(const vec::vector2i &sizeWin, const std::string &name);
+        sfmlWindow(const int fps, const vec::vector2i &sizeWin, const std::string &name);
         ~sfmlWindow();
 
         virtual void draw(Entity *entity) override;
         virtual void clear() override;
         virtual void display() override;
         virtual bool isOpen() override;
+        virtual vec::vector2i getSize() override;
         virtual void pollEvent() override;
-
 };
 
 #endif

@@ -15,10 +15,10 @@ set(
 
         ${src_dir}/main.cpp
         ${src_dir}/Core/Core.cpp
+        ${src_dir}/Engine/Engine/Engine.cpp
 
         ${lib_dir}/libGraph/sfml/sfml.cpp
         ${lib_dir}/lib3D/Object/Blender/Blender.cpp
-        ${lib_dir}/lib3D/Engine/EngineBase/Engine.cpp
 
         ${lib_dir}/Parsing/Parsing.cpp
 )

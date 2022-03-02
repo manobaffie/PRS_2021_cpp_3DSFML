@@ -47,10 +47,12 @@ namespace vec
     typedef vector2D<float> vector2f;
     typedef vector2D<float *> pvector2f;
     typedef vector3D<float> vector3f;
+    typedef vector3D<float *> pvector3f;
     typedef vector4D<float> vector4f;
-    typedef std::vector<pvector2f> vpvector2f;
     typedef std::vector<vector2f> vvector2f;
+    typedef std::vector<pvector2f> vpvector2f;
     typedef std::vector<vector3f> vvector3f;
+    typedef std::vector<pvector3f> vpvector3f;
     typedef std::vector<vector4f> vvector4f;
 
     typedef vector2D<int> vector2i;
