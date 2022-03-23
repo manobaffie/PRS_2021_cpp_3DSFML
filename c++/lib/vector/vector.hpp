@@ -25,6 +25,7 @@ namespace vec
         T x;
         T y;
         T z;
+
         friend std::ostream& operator<<(std::ostream& os, vector3D& v) {
             os << v.x << "\t"<< v.y << "\t" << v.z;
             return (os);
@@ -38,6 +39,7 @@ namespace vec
         T x;
         T y;
         T z;
+
         friend std::ostream& operator<<(std::ostream& os, vector4D& v) {
             os << v.w << "\t" << v.x << "\t"<< v.y << "\t" << v.z;
             return (os);

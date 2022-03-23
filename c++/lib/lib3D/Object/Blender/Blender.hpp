@@ -10,12 +10,12 @@
 class Blender : public Object
 {
     private:
-        vec::vector2i res;
+        vec::vector2i resolution;
         float scale;
         float fov;
         float Z0;
 
-        vec::pvector3f origine;
+        vec::pvector3f position;
 
         vec::vvector3f points;
         std::vector<std::vector<int>> links;
@@ -29,13 +29,20 @@ class Blender : public Object
         void mapping();
 
     public:
-        Blender(const vec::vector2i &res, const float &fov, const std::string &path);
+        Blender(
+            const std::string &path,
+            const vec::vector3f origine = {0, 0, 0},
+            const vec::vector2i resolution = {1080, 720},
+            const float fov = 45
+        );
         ~Blender();
 
         virtual void render2d() override;
-        virtual void rotation(const vec::vector3f &r) override;
+        virtual void rotation(const vec::vector3f &angl, vec::vector3f &origine) override;
         virtual std::vector<vec::vpvector2f> *getVertices2d() override;
-        virtual vec::pvector3f *getOrigine() override;
+        virtual vec::pvector3f *getPosition() override;
+        virtual void setMoove(const vec::vector3f &moov) override;
+
 };
 
 #endif

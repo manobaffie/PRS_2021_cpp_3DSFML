@@ -27,7 +27,6 @@ sfmlEntity::sfmlEntity(std::vector<vec::vpvector2f> &vertices, const vec::vector
 
 sfmlEntity::~sfmlEntity()
 {
-    
 }
 
 void sfmlEntity::draw(sf::RenderTarget &target, sf::RenderStates states) const
@@ -86,15 +85,60 @@ vec::vector2i sfmlWindow::getSize()
     return (vec::vector2i({.x = int(size.x), .y = int(size.y)}));
 }
 
-void sfmlWindow::pollEvent()
+EventType sfmlWindow::pollEvent()
 {
     while (this->window.pollEvent(this->event)) {
         switch (this->event.type) {
-            case sf::Event::Closed:
+            case (sf::Event::Closed):
                 this->window.close();
+                break;
+            case(sf::Event::KeyPressed):
+                this->keyToChar(true, this->event.text.unicode);
+                break;
+            case(sf::Event::KeyReleased):
+                this->keyToChar(false, this->event.text.unicode);
                 break;
             default:
                 break;
         }
+    }
+    return (this->eventType);
+}
+
+void sfmlWindow::keyToChar(const bool &r, const sf::Uint32 &key)
+{
+    switch (key) {
+        case (sf::Keyboard::Z):
+            this->eventType.Z = this->eventType.Z ? (r ? true : false) : true;
+            break;
+        case (sf::Keyboard::Q):
+            this->eventType.Q = this->eventType.Q ? (r ? true : false) : true;
+            break;
+        case (sf::Keyboard::S):
+            this->eventType.S = this->eventType.S ? (r ? true : false) : true;
+            break;
+        case (sf::Keyboard::D):
+            this->eventType.D = this->eventType.D ? (r ? true : false) : true;
+            break;
+        case (sf::Keyboard::Up):
+            this->eventType.Up = this->eventType.Up ? (r ? true : false) : true;
+            break;
+        case (sf::Keyboard::Down):
+            this->eventType.Down = this->eventType.Down ? (r ? true : false) : true;
+            break;
+        case (sf::Keyboard::Left):
+            this->eventType.Left = this->eventType.Left ? (r ? true : false) : true;
+            break;
+        case (sf::Keyboard::Right):
+            this->eventType.Right = this->eventType.Right ? (r ? true : false) : true;
+            break;
+        case (sf::Keyboard::Space):
+            this->eventType.Space = this->eventType.Space ? (r ? true : false) : true;
+            break;
+        case (sf::Keyboard::LShift):
+            this->eventType.LShift = this->eventType.LShift ? (r ? true : false) : true;
+            break;
+        default:
+            break;
     }
 }

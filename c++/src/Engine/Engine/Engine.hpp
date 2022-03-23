@@ -1,28 +1,44 @@
+#ifndef Engine_HPP
+#define Engine_HPP
 
 #include "../IEngine.hpp"
 
-#include "../../../lib/lib3D/Object/Blender/Blender.hpp"
-#include "../../../lib/libGraph/sfml/sfml.hpp"
-
+#include "../../../lib/lib3D/Object/Object.hpp"
+#include "../../GameObject/Player/Player.hpp"
 
 class Engine : public IEngine
 {
     private:
+
+        vec::vector3f worldDegres;
+
         vec::vector2i resolution;
         int FieldOfView;
+        double Z0;
 
         Graph *window;
 
-        Entity *entity;
-        Object *obj;
+        std::vector<IGameObject *> objs;
 
-        std::vector<vec::vpvector2f> *vvpvertices;
-        std::vector<int *> event;
+        IGameObject *player;
+        // Object *objP;
+        // Entity *entityP;
 
-        double Z0;
+        virtual void genMap();
+        virtual void deplacementObj(IGameObject *obj, const EventType &a, const vec::vector3f &rotaVal, const float &speed);
+        virtual void rotationObj(IGameObject *obj, const EventType &a, const vec::vector3f &rotaVal, const float &speed);
+
     public:
         Engine(Graph *win);
         ~Engine();
 
         virtual void draw() override;
+
+        virtual void transform() override;
+        virtual void deplacement(const EventType &a, const vec::vector3f &rotaVal, const float &speed) override;
+        virtual void rotation(const EventType &a, const vec::vector3f &rotaVal, const float &speed) override;
+
+        virtual void addGameObject(IGameObject *go) override;
 };
+
+#endif

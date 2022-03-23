@@ -15,6 +15,13 @@ set(
 
         ${src_dir}/main.cpp
         ${src_dir}/Core/Core.cpp
+        # ${src_dir}/Map/Map/Map.cpp
+
+        ${src_dir}/GameObject/Cube/Cube.cpp
+        ${src_dir}/GameObject/Tree/Tree.cpp
+        ${src_dir}/GameObject/Player/Player.cpp
+        ${src_dir}/GameObject/GameObject/GameObject.cpp
+
         ${src_dir}/Engine/Engine/Engine.cpp
 
         ${lib_dir}/libGraph/sfml/sfml.cpp

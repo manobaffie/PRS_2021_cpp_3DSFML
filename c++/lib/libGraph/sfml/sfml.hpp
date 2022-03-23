@@ -24,6 +24,9 @@ class sfmlWindow : public Graph
     private:
         sf::RenderWindow window;
         sf::Event event;
+        EventType eventType;
+
+        virtual void keyToChar(const bool &r, const sf::Uint32 &key);
 
     public:
         sfmlWindow(const int fps, const vec::vector2i &sizeWin, const std::string &name);
@@ -34,7 +37,7 @@ class sfmlWindow : public Graph
         virtual void display() override;
         virtual bool isOpen() override;
         virtual vec::vector2i getSize() override;
-        virtual void pollEvent() override;
+        virtual EventType pollEvent() override;
 };
 
 #endif

@@ -5,6 +5,22 @@
 
 #include "../vector/vector.hpp"
 
+struct EventType
+{
+    bool Z = false;
+    bool Q = false;
+    bool S = false;
+    bool D = false;
+    bool Up = false;
+    bool Down = false;
+    bool Left = false;
+    bool Right = false;
+    bool Space = false;
+    bool LShift = false;
+
+    vec::vector2i mouse = {0, 0};
+};
+
 class Entity
 {
     public:
@@ -24,7 +40,7 @@ class Graph
         virtual void display() = 0;
         virtual bool isOpen() = 0;
         virtual vec::vector2i getSize() = 0;
-        virtual void pollEvent() = 0;
+        virtual EventType pollEvent() = 0;
 };
 
 #endif
