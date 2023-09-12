@@ -1,10 +1,15 @@
-#include "Core/Core.hpp"
+#include "MyGame/Instance/Visual/Visual.hpp"
+
+void test1()
+{
+    Game::Instance::Base *visual = new MyGame::Instance::Visual();
+
+    delete static_cast<MyGame::Instance::Visual *>(visual);
+}
 
 int main(int ac, char *av[])
 {
-    Core c;
-
-    c.main();
+    test1();
 
     return (0);
 }

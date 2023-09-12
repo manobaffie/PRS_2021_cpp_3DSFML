@@ -8,29 +8,27 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(a.out_bin a.out)
 
 set(src_dir ./../c++/src)
-set(lib_dir ./../c++/lib)
 
-set(
-        a.out_src
-
-        ${src_dir}/main.cpp
-        ${src_dir}/Core/Core.cpp
-        # ${src_dir}/Map/Map/Map.cpp
-
-        ${src_dir}/GameObject/Cube/Cube.cpp
-        ${src_dir}/GameObject/Tree/Tree.cpp
-        ${src_dir}/GameObject/Player/Player.cpp
-        ${src_dir}/GameObject/GameObject/GameObject.cpp
-
-        ${src_dir}/Engine/Engine/Engine.cpp
-
-        ${lib_dir}/libGraph/sfml/sfml.cpp
-        ${lib_dir}/lib3D/Object/Blender/Blender.cpp
-
-        ${lib_dir}/Parsing/Parsing.cpp
+set(src_hpp
+        ${src_dir}/Graph/Graph.hpp
+        ${src_dir}/Graph/Sfml/Sfml.hpp
+        ${src_dir}/vector/vector.hpp
+        ${src_dir}/Game/Instance/Base/Base.hpp
+        ${src_dir}/Game/Instance/Visual/Visual.hpp
+        ${src_dir}/Game/Instance/Entity/Entity.hpp
+        ${src_dir}/MyGame/Instance/Visual/Visual.hpp
 )
 
-add_executable(${a.out_bin} ${a.out_src})
+set(src_cpp
+        ${src_dir}/main.cpp
+        ${src_dir}/Graph/Sfml/Sfml.cpp
+        ${src_dir}/Game/Instance/Base/Base.cpp
+        ${src_dir}/Game/Instance/Visual/Visual.cpp
+        ${src_dir}/Game/Instance/Entity/Entity.cpp
+        ${src_dir}/MyGame/Instance/Visual/Visual.cpp
+)
+
+add_executable(${a.out_bin} ${src_cpp} ${src_hpp})
 add_compile_options(-Wall -Wextra -Werror -g3)
 
-target_link_libraries(${a.out_bin} -fPIC -ldl -pthread -lsfml-graphics -lsfml-window -lsfml-system)
+target_link_libraries(${a.out_bin} -fPIC -ldl -lsfml-graphics -lsfml-window -lsfml-system)
